@@ -1,0 +1,532 @@
+.clear{clear:both;}
+.mainheader{
+    /*height:157px;*/
+    background-color:#1C1C1C;
+    margin-bottom:0px;
+    /*height:157px;*/
+}
+.navbar-default{border:none;border-radius:none;}
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0px!important;
+    }
+}
+a:hover{text-decoration:none;}
+a:visted{text-decoration:none;color:#fff;}
+a:active{text-decoration:none;color:#ccc;}
+
+/* -----  Main menu  ------- */
+
+.mainmenucentral{
+    max-width:575px;	
+    margin:auto;
+    float: none;
+}
+
+.mainmenucentral li a:hover{
+    color:#FFC501!important;
+} 
+.breadcrumbs{margin-top:10px!important;}
+.mainmenucentral li a{color:#fff!important;font-size:16px; font-weight:bold;}
+
+@media only screen and (min-width: 768px) {
+    .mainmenucentral li a{ line-height:5;}
+}
+
+.mainmncolapseresponse{
+    margin-top: 35px;
+    margin-bottom: 33px;
+}
+
+#userMenu li a:hover{
+    color:#FFC501;text-decoration:none;
+}
+#userMenu li , #mainMenu li{
+    display:inline;
+}
+
+#mainMenu li a:hover{
+    color:#FFC501;text-decoration:none;
+}
+
+#userMenu{
+    padding:5px;
+    display:block;
+    margin-top:5px;
+    margin-bottom:-20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .usermnresponsive{display:none!important;}		
+}
+.hrstylemnrespond{
+    margin-bottom: 8px;
+    margin-top: -6px;
+}
+
+#userMenu li{
+    display:inline;
+    padding:6px 12px 6px 12px;
+    margin-left:10px;
+    margin-right:10px;
+}
+#userMenu .regbutton{background-color:#91303a;}
+
+#userMenu li a, #mainMenu li a{color:#fff;font-size:16px; font-weight:bold;}
+.navbar-collapse{border-top:0px;}
+#mainMenu li{
+    display:inline;
+    padding:10px;
+    margin-left:20px;
+    margin-right:20px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #91303a;
+}
+.navbar-toggle{background-color:#91303a; border-radius:1px;}
+
+@media only screen and (max-width: 767px) {
+    .logoCafeteriasba2{
+        display:none;	
+    }
+    .fixdistnacelogo{
+        top:-18px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    #logoCafeteriasba{
+        display:none;	
+    }
+}
+#logoCafeteriasba{
+    height:110px;
+}
+.mnmenu{text-align:center;}
+/* -----  Main menu  ------- */
+
+/* -----  ver mas btn  ------- */
+.vermascont{text-align:right;display: table;height:115px;}
+.vermasbutton{	padding:10px 15px 10px 15px; background-color:#91303a;color:#fff;font-weight: bold;}
+.vermasbutton:hover{color:#FFC501;text-decoration:none;}
+.boxbtnvmas{display: table-cell;
+            vertical-align: middle;}
+.btncenterblq{text-align:center;margin:auto; display:block; width:260px;margin-bottom:20px;margin-top:10px;}
+.btncenterblq:hover{color:#FFC501;text-decoration:none;}	
+.htstyle{margin-bottom:10px;margin-top:10px;}
+/* -----  ver mas btn  ------- */
+
+
+/* -----  ver mas btn  ------- */
+
+/* -----  bloq rank  ------- */
+.fawincon{font-weight:bold; padding:5px;}
+.titlesection{text-align:center;}
+.ficharank{float:left; padding:10px;}
+.ficharank h3{margin-top:0px;}
+.ficharank p{margin:0px;}
+
+
+.cardRanking{background-color:#F9F8F8;padding:5px; border: solid 1px #ccc;border-radius:2px; margin-bottom:10px; margin-left: 0px;     margin-right: 0px;}
+.starspoints{color:#FFC501; margin-left:2px;margin-right:2px;}
+.usrmn{text-align:right;}
+/* -----  bloq rank  ------- */
+
+/* -----  bloq search  ------- */
+.bloqsearch{
+    background-image: url("http://cafeteriasba.com/img/bgroundsearch.jpg");
+    background-position: top center;
+    height:157px;
+}
+.frmsearch{	
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.searchbarbutton{	padding:10px 15px 10px 15px; background-color:#91303a;color:#fff;font-weight: bold; width:100%;height:40px;line-height:1;border:0px;}
+.searchbarbutton:hover{color:#FFC501;text-decoration:none;}
+
+.iconsearchbar{padding-left:5px;padding-right:5px; float:right;}
+.bloqsearch h1{color:#fff; text-align:center; font-weight:bold; font-size:27px;padding-top:5px;padding-bottom:5px;    margin-top: 5px; }
+.heightsearch{height:40px!important;}
+
+/* -----  bloq search  ------- */
+
+.vermasnotabtn{color:#91303a; border-radius:0px;border: solid 1px #91303a;}
+.vermasnotabtn:hover{background-color:#91303a;color:#fff;}
+
+
+.footer {
+    padding-top:40px; 
+    padding-bottom:40px;
+    background-color: black;
+    color:#fff;
+    color:white;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0 0 0px;
+    color: white;
+    font-weight: bold;
+}
+#logoCafeteriasba3{width:110px;}
+.socialincon{width:45px;}
+
+
+
+@media only screen and (max-width: 769px) {
+    
+    .bloqsearch{height:auto;}
+    
+    .bloqsearch h1{font-size:20px;padding-top:15px;}	
+    
+    .form-control{margin-bottom:10px;}
+    
+    .vermascont{margin-left: 46px;}
+    
+    .fchrnk01{margin-left: 40px;}
+    
+    #logoCafeteriasba{width:70px;}
+    
+    #mainMenu li{
+        display:inline;
+        padding:5px;
+        margin-left:5px;
+        margin-right:5px;
+
+    }
+    #mainMenu li a{
+        font-size:12px;
+    }
+
+}
+
+/* ---------------------------------------  Resultado de búsqueda  ---------------------------------------------- */
+
+.sectionselectsearchpage{
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+
+
+/* ---------------------------------------  Resultado de búsqueda  ---------------------------------------------- */
+
+
+/* ---------------------------------------  ver cafetería  ---------------------------------------------- */
+
+/* --------------------------------------- Detalle cafeteria -------------------------------------------*/
+.detailcafe{
+    background-image: url("../img/bgroundsearch.jpg");
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.detailcafe .container{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 154px;
+    font-size: 1em;
+    width: 100%;
+    align-items: center;
+}
+.detailcafe .container h1{
+    font-size: 1.7em;
+}
+.detailcafe .container div{
+    width: 33%;
+}
+.detailcafe .container .horarios{
+    background-color: #ffc40099;
+    margin: 5px;
+    padding: 7px;
+    width: 25%;
+}
+.detailcafe .container .horarios p{
+    margin: 0;
+    padding: 0;
+}
+
+
+/*------------------------------------- Section detalle ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.mainwrapperC{
+    padding: 3%;
+}
+
+.Hs{
+    font-weight: 600;
+}
+.resumenC{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.resumenC .detalleResumenC{
+    width: 47%;
+}
+.mapa{
+    text-align: center;
+    width: 52%;
+    padding: 10px;
+}
+.mapa img{
+    width:100%;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+}
+
+@media only screen and (max-width: 920px) {
+    .resumenC{display:block;}
+    .resumenC .detalleResumenC, .mapa{
+        width:100%!important;
+        padding: 0px;
+    }	
+    .detailcafe .container .horarios {
+        display:none;
+    }	
+    .detailcafe .container div {
+        width: 100%;
+    }
+    .starshowheader .starspoints {
+        font-size: 10px;
+    }	
+}
+.infoCafe{
+    margin-top: 0;
+    text-align: left;
+    font-size: 1.2em;
+}
+.imagenesCafe img{
+    width: 100%;
+}
+.navegacionResumen{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.promosC{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+}
+.promosC img{
+    width: 100%;
+}
+.txtPromo{
+    margin: 0 !important;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+.txtPromo p {
+    padding: 5px;
+}
+.promosC div{
+    margin-left: 15px;
+}
+
+.bloqueReseña{
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    padding: 1.2%;
+    background-color: #f9f8f8;
+}
+.califyprecio{
+    margin-top: 15px;	
+    /*display: flex;
+    flex-direction: row;*/
+    justify-content: space-around;
+}
+.califyprecio .loadimgs {
+    display: inline;/* width: 145px;*/
+}
+
+
+.califyprecio .loadimgs {
+    -webkit-visibility: hidden;
+    width: 90px;
+    -webkit-position: relative;
+}
+.califyprecio .loadimgs::before {
+    /*content: 'Select some files';*/
+    content: "\f0ee";
+    font-family: "FontAwesome";
+    display: inline-block;
+    background: #f9f8f8;
+    border: 1px solid #ccc;
+    padding: 2px 60px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    visibility: visible;
+    position: absolute;
+    color:#91303a;
+}
+.califyprecio .loadimgs:hover::before {
+    border-color: #91303a;
+}
+.califyprecio .loadimgs:active::before {
+    background-color: #91303a;
+    color:#fff;
+}
+
+
+
+
+
+.califyprecio .starspoints {
+    font-size:22px;
+}
+
+.starshowheader .starspoints{font-size:18px;}
+@media only screen and (max-width: 920px) {
+    .starshowheader .starspoints {
+        font-size: 11px;
+    }	
+}	
+.califyprecio .starasignbox{float:left;margin-right:15px;}
+.califyprecio .boxbtnvmas{float:right;}
+.califyprecio input[type="button"]{
+    background-color: #91303a;
+    color: white;
+}
+.bloqueComentarios{
+    margin-top: 2.5%;
+}
+
+.bloqueComentarios .comentario{
+    margin-top: 1%;	
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #f9f8f8;
+    align-items: center;
+    padding: 5px;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+}
+
+.bloqueComentarios .comentario .imgUser{
+    width: 10%;
+}
+.bloqueComentarios .comentario .imgUser img{
+    width: 100%;
+}
+.bloqueComentarios .comentario .imgUser img{
+    border: solid 1px #ccc;
+}
+.bloqueComentarios .comentario .reseñaUser{
+    width: 60%;
+}
+.bloqueComentarios .comentario .detailUser{
+    width: 22%;
+}
+.bloqueComentarios .comentario .detailUser h3{
+    margin-top:10px;
+}
+.bloqueComentarios .comentario .reseñaUser .starspoints {
+    font-size:18px;
+}
+.textareaW{
+    width: 100%;
+}
+.textareaW textarea{
+    width: 100%;
+}
+
+@media only screen and (max-width: 780px) {
+    .califyprecio .loadimgs {
+        display: block;/* width: 145px;*/
+        margin-bottom:15px;
+        margin-top:10px;
+    }
+    .califyprecio .starasignbox{display:block; width:100%;}
+    .califyprecio .boxbtnvmas{margin-bottom:10px;}
+    .bloqueComentarios .comentario .imgUser{display:none;}
+
+}
+
+
+/*-----------------------------------------------Modal Login Registro ------------------------------------------------------------------------------------------------------------------------------------------------------ */
+
+#mainTitleModal{
+    line-height: 1;
+    display: inline-block;
+}
+#mainmodallogin .close{
+    line-height: 1.5;
+    color:#91303a;
+    opacity: 1;
+}
+#mainmodallogin .close:hover{
+    opacity: 0.5;
+}
+#mainmodallogin .modal-header {
+    border-bottom: 1px solid #91303a;
+}
+#mainmodallogin input{
+    width: 98%;
+    margin-bottom:8px;
+}
+#mainmodallogin form {margin-bottom:10px;}
+#mainmodallogin form .boxbtnvmas{
+    padding-top: 8px;
+}
+
+#menuimg{   
+    margin-top: -48px;
+    width: 60px;
+}
+
+.mainmenuleft li a:hover{
+    color:#FFC501!important;
+} 
+
+.mainmenuleft li a{color:#fff!important;font-size:16px; font-weight:bold;}
+/*------------------------------------------------------------------------- Fin login Registro ---------------------------------------------------------------------------------------------------------------------------------*/
+
+.media-object{
+    width: 70px!important;
+}
+
+.media{
+    margin-left: 50px;
+}
+
+.dejar_comentario{
+    padding: 10px 0px; 
+}
+
+
+.agregar_fav{
+    color: lightgrey;
+    font-weight: 800;
+    font-size: 26px;
+}
+
+.quitar_fav{
+    color: #efef25;
+    font-weight: 800;
+    font-size: 26px;
+}
+
+#userMenu{
+
+    display:block;
+
+}
