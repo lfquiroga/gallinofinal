@@ -30,7 +30,7 @@ if (Session::has('_errors')){
 <div class="row">
   <div class="col-md-12 bloqsearch">
     <div class="container frmsearch">
-      <h1>Descubr&iacute las mejores cafeter&iacuteas de Buenos Aires</h1>
+      <h1>Descubr&iacute las mejores cafeter&iacute;as de Buenos Aires</h1>
       <form class="" action="busqueda.php" method="post" target="_self">
         <div class="col-sm-4">
           <input type="text" name="buscador" class="form-control heightsearch" placeholder="Buscar por nombre o palabra clave">
@@ -82,7 +82,7 @@ if (Session::has('_errors')){
         </div>
         <div class="col-md-4 vermascont"><div class="boxbtnvmas">
             
-            <a class="vermasbutton" href="<?= \cafeterias\Core\App::urlTo('vercafeteria/' . $datos->getId()) ?>">Ver cafeter&iacutea <i
+            <a class="vermasbutton" href="<?= \cafeterias\Core\App::urlTo('vercafeteria/' . $datos->getId()) ?>">Ver cafeter&iacute;a <i
                   class="fawincon fa fa-angle-right" aria-hidden="true"></i>
             </a>
            <?php
@@ -132,9 +132,9 @@ if (Session::has('_errors')){
       <div class="thumbnail">
         <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
         <div class="caption">
-          <h3>Conoc&eacute el caf&eacute m&aacutes caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
+          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
           <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacutes</a></p>
+          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
         </div>
       </div>
     </div>
@@ -142,9 +142,9 @@ if (Session::has('_errors')){
       <div class="thumbnail">
         <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
         <div class="caption">
-          <h3>Conoc&eacute el caf&eacute m&aacutes caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
+          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
           <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacutes</a></p>
+          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
         </div>
       </div>
     </div>
@@ -152,9 +152,9 @@ if (Session::has('_errors')){
       <div class="thumbnail">
         <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
         <div class="caption">
-          <h3>Conoc&eacute el caf&eacute m&aacutes caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
+          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
           <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacutes</a></p>
+          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
         </div>
       </div>
     </div>
@@ -179,27 +179,31 @@ if (Session::has('_errors')){
           <div class="col-xs-12 col-md-6">
             <form method="post" action="<?= \cafeterias\Core\App::urlTo('auth/login') ?>" >
               <h3>Iniciar Sesion</h3>
-              <input type="text" class="form-control" name="email" placeholder="Email" 
-                     value="<?php if (isset($_old_input['email'])) {
-             echo($_old_input['email']);
-  } ?>">
+              <input type="text" class="form-control" name="email" placeholder="Email" value="
+              <?php if (isset($_old_input['email'])) {
+                  
+                    echo($_old_input['email']);
+             
+                } ?>">
               <input type="password" class="form-control" name="password" placeholder="Password">
               <div class="boxbtnvmas"><input type="submit" value="Ingresar" /></div>
               
               <?php if (isset($_errors['nocoincide'])) {
-      echo('<p>'.$_errors['nocoincide'].'</p>'); } ?> 
-              <?php if (isset($_errors['nousuario'])) {
-      echo('<p>'.$_errors['nousuario'].'</p>'); } ?> 
+                    echo('<p>'.$_errors['nocoincide'].'</p>'); } ?> 
               
-            </form>		
+              <?php if (isset($_errors['nousuario'])) {
+                    echo('<p>'.$_errors['nousuario'].'</p>'); } ?> 
+              
+            </form>	
+            
           </div>			
           <div class="col-xs-12 col-md-6">
 
             <form method="POST" accept-charset="utf-8" action="<?= \cafeterias\Core\App::urlTo('/register') ?>" id="registrousuario">
               <h3>Registro</h3>
+              
               <label for="email">email</label>
-              <input type="text" id="email_re" name="email_re" class="form-control" 
-              placeholder="Email" value="
+              <input type="text" id="email_re" name="email_re" class="form-control" placeholder="Email" value="
               <?php 
               
               if (isset($_old_input['email_re'])) {

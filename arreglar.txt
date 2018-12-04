@@ -22,7 +22,9 @@
 - Siguiendo con esa temática, hay varios problemas con lo que es la jerarquía de los <h*>. Los <h*> son etiquetas extremadamente importantes, especialmente desde el punto de vista de accesibilidad. Los lectores de pantalla (navegadores para no videntes) arman un árbol de navegación del documento en base a los <h*>. Para que eso funcione correctamente, cada documento debería tener al comienzo, un único <h1>, que indique el encabezado principal del mismo. Luego, cada una de las subsecciones de ese <h1>, debería ser un <h2>. A su vez, cada subsección de un <h2>, debería ser un <h3>, y así sucesivamente, sin saltearse ningún número en la numeración (es decir, si tengo una subsección de un <h2>, debe ser un <h3>, no un <h4> o <h5>).
 
 - 2 de los 3 cafés de la home llevan a la misma pantalla (vercafeteria/1). En la home debería poder ver un listadode todas las cafeterías de la base.
+
 - Falta la posibilidad de que los usuarios comenten.
+
 - El botón de editar de Cafetería dice "Cargar Cerveza", en vez de algo como "Actualizar Cafetería".
 
 - El ABM funciona.	- Hash no sería un Modelo, y por tanto no debería estar en esa carpeta. Los modelos son, recordemos, clases que contienen la lógica del negocio, es decir, la lógica principal y específica de nuestra aplicación. El sistema de hasheo es algo más bien estandarizado, y debería estar en otro namespace, como "Auth", "Security", etc.
