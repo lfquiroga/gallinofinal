@@ -65,7 +65,7 @@ class CafeteriasController {
         // Obtenemos las cafeteria que nos piden.
         $cafeteria = new Cafeteria($id);
 
-        View::render('admin/envento', compact('cafeteria'),1);
+        View::render('admin/editarcafeteria', compact('cafeteria'),1);
     }
 
     /**

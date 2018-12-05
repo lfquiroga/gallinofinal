@@ -61,12 +61,13 @@ if (Session::has('_errors')){
   <?php
     
   foreach ($cafeterias as $datos) {
+ $imagen=$datos->obtenerimgportada($datos->getId());
  
       ?>
       <div class="row cardRanking">
         <div class="col-md-8">
           <div class="ficharank"><span>#<?php echo $datos->getterRanking() ?></span></div>
-          <div class="ficharank"><img alt="Cafeterias BA" src="<?= \cafeterias\Core\App::urlTo('img/allsaints.jpg') ?>"/></div>
+          <div class="ficharank"><img alt="Cafeterias BA" src="<?= \cafeterias\Core\App::urlTo($imagen) ?>"/></div>
           <div class="ficharank fchrnk01">
             <h3><?php echo $datos->getNombre() ?></h3>
             <p>Zona: <?php echo $datos->getSucursal() ?></p>
@@ -179,12 +180,7 @@ if (Session::has('_errors')){
           <div class="col-xs-12 col-md-6">
             <form method="post" action="<?= \cafeterias\Core\App::urlTo('auth/login') ?>" >
               <h3>Iniciar Sesion</h3>
-              <input type="text" class="form-control" name="email" placeholder="Email" value="
-              <?php if (isset($_old_input['email'])) {
-                  
-                    echo($_old_input['email']);
-             
-                } ?>">
+              <input type="text" class="form-control" name="email" placeholder="Email" value="<?php if (isset($_old_input['email'])) {  echo($_old_input['email']);} ?>">
               <input type="password" class="form-control" name="password" placeholder="Password">
               <div class="boxbtnvmas"><input type="submit" value="Ingresar" /></div>
               

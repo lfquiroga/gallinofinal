@@ -247,12 +247,21 @@ class Cafeteria extends Modelo implements JsonSerializable {
             'id' => $id_cafeteria
         ]);
   
+       
         
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) { 
             $img = $fila['ubicacion'];
         }
         
-        return $img;
+        if($img == null){
+            $img = 'img/noimage.png';
+            return $img;
+        }else{
+           return $img;  
+        }
+        
+           
+    
 
     }
     /**

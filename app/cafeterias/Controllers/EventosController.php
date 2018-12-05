@@ -33,9 +33,9 @@ class EventosController {
        
         if($_SESSION['Rol'] == 1){
         // Traemos todas cafeterias.
-        $cafeterias = Cafeteria::getAll();
+        $eventos = Eventos::getAll();
         
-        View::render('admin/abmeventos', compact('cafeterias'), 1);
+        View::render('admin/abmeventos', compact('eventos'), 1);
         
         }
     }
@@ -57,18 +57,20 @@ class EventosController {
 
         ]);
         
+
+        
         if (!$validator->passes()) {
 
             Session::set('_old_input', $_POST);
             Session::set('_errors', $validator->getErrors());
 
 
-            if ($_POST['ideditar']) {
+            if (isset($_POST['ideditar'])){
 
                 App::redirect('crearevento' . $_POST['ideditar']);
                 
             } else {
-                
+
                 App::redirect('crearevento');
                 
             }
@@ -113,7 +115,6 @@ class EventosController {
                
             ]);
             
-            echo($evento);
             
             if($evento){
                 
@@ -138,6 +139,32 @@ class EventosController {
             
         }
         
+    }
+    
+    
+    /**
+     * obtiene id de evento por url ,y nos lleva a editarlo
+     *
+     * @throws Exception
+     */
+    public function editar() {
+        
+        
+    if (!Session::has('Usuario') || $_SESSION['Rol'] != 1 ){
+
+         $cafeterias= Cafeteria::getRanking();
+
+        View::render('front/inicioView', compact('cafeterias'));
+    }
+
+        $data = Route::getUrlParameters();
+
+        $id = $data['id'];
+
+        // Obtenemos las cafeteria que nos piden.
+        $evento = new Eventos($id);
+
+        View::render('admin/editarevento', compact('evento'),1);
     }
     
 

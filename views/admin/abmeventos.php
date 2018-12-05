@@ -8,6 +8,8 @@ if (Session::has('_errors')) {
     $_errors = Session::once('_errors');
     $_old_input = Session::once('_old_input');
 }
+
+
 ?>
 
 <div class="container" >
@@ -16,8 +18,70 @@ if (Session::has('_errors')) {
 
     <h2>Eventos cargados en el sistema</h2>
 
+    <table id="eventostabla" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Nombre</th> 
+          <th>Titulo</th> 
+          <th>Descripcion</th> 
+          <th>Fecha</th> 
+          <th>Estado</th>          
+          <th>Estado</th> 
+          <th>Editar</th> 
+          <th>Eliminar</th> 
+        </tr>
+      </thead>
+      <tbody>
+<?php
+if($eventos){
+foreach ($eventos as $row) {
+    if ($row->estado != 2) {
+        echo("<tr>");
 
+        if (isset($row->nombre)) {
+            echo('<td>' . $row->nombre . '</td>');
+        } else {
+            echo('<td> - </td>');
+        }
 
+        if (isset($row->titulo)) {
+            echo('<td>' . $row->titulo. '</td>');
+        } else {
+            echo('<td> - </td>');
+        }
+
+        if (isset($row->descripcion)) {
+            echo('<td>' . $row->descripcion . '</td>');
+        } else {
+            echo('<td> - </td>');
+        }
+
+        if (isset($row->fecha_evento)) {
+            echo('<td>' . $row->fecha_evento . '</td>');
+        } else {
+            echo('<td> - </td>');
+        }
+
+        if (isset($row->estado)) {
+            echo('<td>' . $row->estado . '</td>');
+        } else {
+            echo('<td> - </td>');
+        }
+
+        echo("<td><a href='crearevento/" . $row->id . "'>EDITAR</a></td>");
+        echo("<td><input type='button' value ='Eliminar' class='eliminar' id='$row->id' ></td>");
+
+        echo("</tr>");
+        }
+    }
+}
+?>
+
+      </tbody>
+
+    </table>
+
+  
   </div>
 
 
@@ -27,13 +91,13 @@ if (Session::has('_errors')) {
 
 
   <div id="formulariousuario" class="<?php
-if (isset($_errors) || isset($ideditar)) {
+  if (isset($_errors) || isset($ideditar)) {
 
-    echo('collapse in');
-} else {
-    echo('collapse ');
-}
-?>">
+      echo('collapse in');
+  } else {
+      echo('collapse ');
+  }
+  ?>">
 
     <h1>Cargar nuevo evento</h1>
 
@@ -42,34 +106,33 @@ if (isset($_errors) || isset($ideditar)) {
 
         <div class="form-group">
           <label for="nombre">Nombre </label>
-          <input type="text" name="nombre" id="nombre" value="<?php if (isset($_old_input['nombre'])) {
-      echo($_old_input['nombre']);
-  } ?>" class="form-control"/>
-          <p><?php if (isset($_errors['nombre'][0])) {
-      echo($_errors['nombre'][0]);
-  } ?> </p>
+          <input type="text" name="nombre" id="nombre" value="<?php if (isset($_old_input['nombre'])) { echo($_old_input['nombre']);}?>" class="form-control"/>
+          <p><?php
+          if (isset($_errors['nombre'][0])) {
+              echo($_errors['nombre'][0]);
+          }
+          ?> </p>
         </div>
 
         <div class="form-group">
           <label for="direccion">Titulo</label>
-          <input type="text" name="titulo" id="titulo" value="<?php if (isset($_old_input['titulo'])) {
-      echo($_old_input['titulo']);
-  } ?>" class="form-control"/>
-          <p><?php if (isset($_errors['titulo'][0])) {
-      echo($_errors['titulo'][0]);
-  } ?> </p>
+          <input type="text" name="titulo" id="titulo" value=" <?php if (isset($_old_input['titulo'])){echo($_old_input['titulo']);}?> " class="form-control"/>
+          <p><?php
+            if (isset($_errors['titulo'][0])) {
+                echo($_errors['titulo'][0]);
+            }
+            ?> </p>
         </div>
 
         <div class="form-group">
           <label for="sucursal">Descripcion</label>
-          <textarea type="text" name="descripcion" id="descripcion" class="form-control">
-<?php if (isset($_old_input['descripcion'])) {
-    echo($_old_input['descripcion']);
-} ?>
-          </textarea>
-          <p><?php if (isset($_errors['descripcion'][0])) {
-    echo($_errors['descripcion'][0]);
-} ?> </p>
+          <textarea type="text" name="descripcion" id="descripcion" class="form-control"><?php if (isset($_old_input['descripcion'])) {echo($_old_input['descripcion']);}?></textarea>
+            <p><?php
+            if (isset($_errors['descripcion'][0])) {
+                echo($_errors['descripcion'][0]);
+            }
+            ?>
+          </p>
         </div>
 
 
@@ -81,45 +144,51 @@ if (isset($_errors) || isset($ideditar)) {
             <option value="2">Inactivo</option>
             <option value="3">Pendiente</option>
           </select>
-          <p><?php if (isset($_errors['rol'][0])) {
-            echo('Debe seleccionar un estado para el usuario');
-        } ?> </p>
+          <p><?php
+if (isset($_errors['rol'][0])) {
+    echo('Debe seleccionar un estado para el usuario');
+}
+?> </p>
         </div>
-        
-        
+
+
 
     </div>
 
     <div class="col-lg-6 col-sm-6">
-      
+
       <div class="form-group">
-          <label for="fecha_evento">Fecha evento</label>
-          <input type="date"  name="fecha_evento" id="fecha_evento" value="<?php if (isset($_old_input['fecha_evento'])) {
-                echo($_old_input['fecha']);
-            } ?>" class="form-control"/>
-                    <p><?php if (isset($_errors['fecha_evento'][0])) {
+        <label for="fecha_evento">Fecha evento</label>
+        <input type="date"  name="fecha_evento" id="fecha_evento" value="<?php
+        if (isset($_old_input['fecha_evento'])) {
+            echo($_old_input['fecha']);
+        }
+        ?>" class="form-control"/>
+        <p><?php
+            if (isset($_errors['fecha_evento'][0])) {
                 echo($_errors['fecha_evento'][0]);
-            } ?> </p>
-         
-        </div>
-      
+            }
+            ?> </p>
+
+      </div>
+
       <div class="form-group">
 
         <label for="sitio">Imagen de Perfil </label>
         <input type="file" name="imagen" id="imagen" value="<?php
-        if (isset($_old_input['imagen'])) {
-            echo($_old_input['imagen']);
-        }
-        ?>" class="form-control" />
-            <p><?php
-                if (isset($_errors['imagen'][0])) {
-                    echo($_errors['imagen'][0]);
-                }
-        ?> </p>
+            if (isset($_old_input['imagen'])) {
+                echo($_old_input['imagen']);
+            }
+            ?>" class="form-control" />
+        <p><?php
+            if (isset($_errors['imagen'][0])) {
+                echo($_errors['imagen'][0]);
+            }
+            ?> </p>
       </div>
-        <br/>
+      <br/>
       <input type="submit" class="login-button btn btn-default" value="Cargar Evento"/>
-      
+
     </div>
     </form>
 
@@ -130,7 +199,7 @@ if (isset($_errors) || isset($ideditar)) {
 
   <script>
 
-      $('#usuariostabla').DataTable();
+      $('#eventostabla').DataTable();
 
 
       $(".eliminar").click(function () {

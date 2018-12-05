@@ -11,7 +11,7 @@ use JsonSerializable;
  */
 class Eventos extends Modelo implements JsonSerializable {
 
-    protected $table = "cafeteria";
+    protected $table = "eventos";
     
     protected $primaryKey = "id";
     
