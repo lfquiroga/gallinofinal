@@ -114,7 +114,7 @@ if (Session::has('_errors')) {
       </div>
       <br/>
       
-       <input type="hidden" name="ideditar" value="<?= $_old_input['id'] ?>">
+      <input type="hidden" name="ideditar" value="<?= $_old_input['ideditar'] ?>">
       <input type="submit" class="login-button btn btn-default" value="Cargar Evento"/>
 
     </div>

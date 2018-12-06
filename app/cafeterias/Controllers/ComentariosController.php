@@ -16,77 +16,72 @@ use cafeterias\Core\HandleImage;
 use cafeterias\Core\Route;
 use cafeterias\Core\App;
 
+if (!Session::has('Rol')) {
 
- 
-if (!Session::has('Rol')){
-    
-     $data['cafeterias']= Cafeteria::getRanking();
-     
+    $data['cafeterias'] = Cafeteria::getRanking();
+
     View::render('front/inicioView', compact('data'));
 }
- 
 
 /**
  * 
  */
 class ComentariosController {
-    
+
     /**
      * VInserta un comentario asociandolo con una cafeteria y actualiza el contador de comentarios
      *
      * @return string
      */
-    
-   public function cargarComentarios() {   
-       
-   
+    public function cargarComentarios() {
 
         $validator = new Validator($_POST, [
             'comentario' => ['required', 'min:5'],
-
         ]);
-        
-        
-        if (!$validator->passes()) {
-            Session::set('_old_input', $_POST);
-            Session::set('_errors', $validator->getErrors());
 
-        }
-        
-          $comentario = CafeteriasComentarios::cargar([
-                        'id_usuario'    => $_SESSION['id'],
-                        'id_cafeteria'  => $_POST['id'],
-                        'comentario'    => $_POST['comentario']
-            ]);
-          
-          if($comentario){
-            echo('OK');
-        }else{
+        if (!$validator->passes()) {
+
+            Session::set('_old_input', $_POST);
+
+            Session::set('_errors', $validator->getErrors());
+            
             echo('ERROR');
+            
+        } else {
+
+            $comentario = CafeteriasComentarios::cargar([
+                        'id_usuario' => $_SESSION['id'],
+                        'id_cafeteria' => $_POST['id'],
+                        'comentario' => $_POST['comentario']
+            ]);
+
+            if ($comentario) {
+
+                echo('OK');
+            } else {
+                echo('ERROR');
+            }
         }
-        
     }
-    
-     /**
+
+    /**
      * actualiza contador de comentarios
      *
      * @return string
      */
-   public function actualizarComentarios() {   
-       
-        
-          $comentario = CafeteriasComentarios::actualizarContador([
-                        'id_usuario'    => $_SESSION['id'],
-                        'id_cafeteria'  => $_POST['id']
-            ]);
-          
-          if($comentario){
+    public function actualizarComentarios() {
+
+
+        $comentario = CafeteriasComentarios::actualizarContador([
+                    'id_usuario' => $_SESSION['id'],
+                    'id_cafeteria' => $_POST['id']
+        ]);
+
+        if ($comentario) {
             echo('OK');
-        }else{
+        } else {
             echo('ERROR');
         }
-        
     }
-    
-    
+
 }

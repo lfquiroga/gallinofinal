@@ -16,6 +16,15 @@ $cafeterias = $data['cafeterias'];
         
     }
     
+    if(isset($data['eventos'])){
+        
+        $eventos=$data['eventos'];
+        
+    }else{
+    
+        $eventos = '';
+    }
+    
 if (Session::has('_errors')){
     
     $_errors = Session::once('_errors');
@@ -87,7 +96,7 @@ if (Session::has('_errors')){
                   class="fawincon fa fa-angle-right" aria-hidden="true"></i>
             </a>
            <?php
-
+           
             if(Session::has('Rol') && $favoritas!= '' ){ 
                 
               if(!in_array($datos->getId(), $favoritas)){
@@ -106,16 +115,8 @@ if (Session::has('_errors')){
 
             <?php 
                 }           
-             }else{
-            ?>
-            
-            <button type="submit" class="btn btn-link favoritos" id="<?= $datos->getId() ?>">
-                <span class="glyphicon glyphicon-star agregar_fav"></span>
-            </button>
-
-            <?php 
-                }  
-            ?>
+             }
+             ?>
           </div>
         </div>
       </div>
@@ -128,37 +129,41 @@ if (Session::has('_errors')){
   <hr class="htstyle">
 
   <div class="row">
-    <h2 class="titlesection">&Uacuteltimas notas</h2>
-    <div class="col-sm-4 col-md-4">
-      <div class="thumbnail">
-        <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
-        <div class="caption">
-          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
-          <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4">
-      <div class="thumbnail">
-        <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
-        <div class="caption">
-          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
-          <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4">
-      <div class="thumbnail">
-        <img src="<?= \cafeterias\Core\App::urlTo('img/nota01.jpg') ?>" alt="Nota">
-        <div class="caption">
-          <h3>Conoc&eacute; el caf&eacute m&aacute;s caro del mundo y su extra&ntilde;a forma de obtener las semillas</h3>
-          <hr>
-          <p><a href="#" class="btn btn-default vermasnotabtn" role="button">Ver m&aacute;s</a></p>
-        </div>
-      </div>
-    </div>
+    <h2 class="titlesection">Ultimos Eventos</h2>
+    <!-- EVENTOS -->
+    
+    <?php 
+    
+    if($eventos != ''){
+        foreach ($eventos as $row){
+            $img=$row->getUbicacion_imagen();
+
+            if(!$img){
+                
+                $img="img/noimage.png";
+                
+            }
+            ?>
+            <div class='col-sm-4 col-md-4'>
+            <div class='thumbnail'>
+              <img src='<?= \cafeterias\Core\App::urlTo($img) ?>' alt='Nota' class="img_nota">
+              <div class='caption'>
+                <h3><?= $row->getTitulo() ?></h3>
+                <hr>
+                <p><a href='#' class='btn btn-default vermasnotabtn' role='button'>Ver m&aacute;s</a></p>
+              </div>
+            </div>
+          </div>
+    <?php
+            
+        }
+        
+    }
+    
+    ?>
+    
+  
+   
 
   </div>
 
@@ -215,8 +220,11 @@ if (Session::has('_errors')){
             } ?> 
               
               <label for="pass">password</label>
+              
               <input type="password" id="pass" name="pass" name="pass" type="password" class="form-control" placeholder="Contrase&ntilde;a" required />
+              
               <label for="pass2">Password repetir</label>
+              
               <input type="password" id="pass2" name="pass2" class="form-control" placeholder="Repetir contrase&ntilde;a" required />
               
             <?php if (isset($_errors['pass'][0])) {

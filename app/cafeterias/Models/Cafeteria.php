@@ -254,10 +254,14 @@ class Cafeteria extends Modelo implements JsonSerializable {
         }
         
         if($img == null){
+            
             $img = 'img/noimage.png';
             return $img;
+            
         }else{
+            
            return $img;  
+           
         }
         
            

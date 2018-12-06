@@ -259,7 +259,7 @@ a:active{text-decoration:none;color:#ccc;}
 /*------------------------------------- Section detalle ---------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .mainwrapperC{
-    padding: 3%;
+    padding: 0% 3%;
 }
 
 .Hs{
@@ -529,4 +529,10 @@ a:active{text-decoration:none;color:#ccc;}
 
     display:block;
 
+}
+
+.img_nota{width: 350px;height: 220px!important;}
+
+.caption h3{
+    word-wrap: break-word!important;
 }

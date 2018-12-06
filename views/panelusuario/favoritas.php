@@ -38,6 +38,7 @@ foreach ($cafeterias as $datos) {
                <img width="150" alt="Cafeterias BA" src="<?= \cafeterias\Core\App::urlTo($imagen) ?>"/>
                 <?php } ?>
               <br/>
+              
               <a class="btn btncomentarios" id="actualizar_<?= $datos->getId() ?>" data-toggle="collapse" href="#comentario_<?= $datos->getId() ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                 Ver comentarios 
                 <?php

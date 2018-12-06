@@ -92,9 +92,7 @@ class Eventos extends Modelo implements JsonSerializable {
         $db = Connection::getConnection();
         
         $query = "INSERT INTO eventos (	nombre ,titulo ,descripcion , fecha_evento  , estado )
-		VALUES( :nombre , :titulo , :descripcion , :fecha_evento , :estado)";
-
-           
+		VALUES( :nombre , :titulo , :descripcion , :fecha_evento , :estado)";           
       
         $stmt = $db->prepare($query);
     
@@ -118,6 +116,46 @@ class Eventos extends Modelo implements JsonSerializable {
             $evento->cargarDatosDeArray($datos);
 
             return $datos['id'];
+            
+        } else {
+            //return false;
+            print_r($stmt->errorInfo());
+            throw new \Exception('Error al crear el evento .');
+        }
+    }
+    
+    
+      /**
+     * Modificar evento
+     *
+     * @param $datos array
+     * @return evento
+     * @throws Exception
+     */
+    public static function update($datos) {
+            
+        $db = Connection::getConnection();
+        
+        $query = "UPDATE eventos SET 	nombre = :nombre ,titulo = :titulo,
+            descripcion = :descripcion , fecha_evento = :fecha_evento  , estado =  :estado
+		where id = ".$datos['ideditar'];           
+      
+        $stmt = $db->prepare($query);
+    
+
+        $exito = $stmt->execute([
+            'nombre' => $datos['nombre'],
+            'titulo' => $datos['titulo'],
+            'descripcion' => $datos['descripcion'],
+            'fecha_evento' => $datos['fecha_evento'],
+            'estado' => $datos['estado']
+        ]);
+        
+
+        
+        if ($exito) {
+            
+          return $datos['ideditar'];
             
         } else {
             //return false;

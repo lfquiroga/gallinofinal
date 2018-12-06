@@ -95,4 +95,32 @@ class Modelo
 
 		return $salida;
 	}
+        
+	/**
+	 * Obtiene una array con todos los modelos.
+	 *
+	 * @return array
+	 */
+	public static function getLast3()
+	{
+		
+		$self = new static;
+                
+		$db = DBConnection::getConnection();
+		$query = "SELECT * FROM " . $self->table ." order by id desc  limit 3 ";
+
+		$stmt = $db->prepare($query);
+
+		$stmt->execute();
+
+		$salida = [];
+
+		while($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$obj = new static;
+			$obj->loadDataFromRow($fila);
+			$salida[] = $obj;
+		}
+
+		return $salida;
+	}
 }

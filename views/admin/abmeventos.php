@@ -107,11 +107,7 @@ foreach ($eventos as $row) {
         <div class="form-group">
           <label for="nombre">Nombre </label>
           <input type="text" name="nombre" id="nombre" value="<?php if (isset($_old_input['nombre'])) { echo($_old_input['nombre']);}?>" class="form-control"/>
-          <p><?php
-          if (isset($_errors['nombre'][0])) {
-              echo($_errors['nombre'][0]);
-          }
-          ?> </p>
+          <p><?php  if(isset($_errors['nombre'][0])){echo($_errors['nombre'][0]);}?> </p>
         </div>
 
         <div class="form-group">

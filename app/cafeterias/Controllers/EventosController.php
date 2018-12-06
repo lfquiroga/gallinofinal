@@ -52,7 +52,7 @@ class EventosController {
         
         $validator = new Validator($_POST, [
             'nombre' => ['required', 'min:3'],
-            'titulo' => ['required', 'min:10'],
+            'titulo' => ['required', 'min:10', 'max:55'],
             'descripcion' => ['required', 'min:50']
 
         ]);
@@ -63,11 +63,10 @@ class EventosController {
 
             Session::set('_old_input', $_POST);
             Session::set('_errors', $validator->getErrors());
-
-
+            
             if (isset($_POST['ideditar'])){
 
-                App::redirect('crearevento' . $_POST['ideditar']);
+                App::redirect('crearevento/'. $_POST['ideditar']);
                 
             } else {
 
@@ -76,22 +75,13 @@ class EventosController {
             }
         }
         
-         $path_imagen='img/usuarios/nopicture.png';
-        
-        /*if ($_FILES) {
-            
-                $nombre = HandleImage::upImage($_FILES, $_POST['ideditar'], 200 ,'img/usuarios/');
+
                 
-                $path_imagen='img/eventos/'.$nombre;
-               
-            }*/
-
+       
         if (isset($_POST['ideditar'])){
-
-            
-          $pass = Hash::encrypt($_POST['pass']);
-             
-          $usuario = User::update([
+        
+          $evento = Eventos::update([
+                        'ideditar'      => $_POST['ideditar'],
                         'nombre'        => $_POST['nombre'],
                         'titulo'        => $_POST['titulo'],
                         'descripcion'   => $_POST['descripcion'],
@@ -99,10 +89,8 @@ class EventosController {
                         'estado'        => $_POST['estado'],
                
             ]);
-
-            // Redireccionamos.
-            App::redirect('abmusuarios');
-            
+           die();
+         
         } else {
 
             $evento = Eventos::crear([
@@ -114,20 +102,26 @@ class EventosController {
 
                
             ]);
-            
-            
+          }  
+          
+        
             if($evento){
+
+                  
+                  echo(strlen($_FILES['name']));
+                  
+                die();
                 
-                if ($_FILES) {   
+                if (strlen($_FILES['name']) != 0) {   
 
                 $nombre = HandleImage::upImage($_FILES,$evento, 355 ,'img/eventos/');
-                
-
+                var_dump($nombre);
+                die();
                 $path_imagen='img/eventos/'.$nombre;
                 
                  $usuario = Eventos::updateImagen([
                       'idevento'              => $evento,
-                        'ubicacion_imagen'      => $path_imagen
+                      'ubicacion_imagen'      => $path_imagen
                     ]);
                
                 }
@@ -137,7 +131,7 @@ class EventosController {
             App::redirect('crearevento');
           
             
-        }
+       
         
     }
     

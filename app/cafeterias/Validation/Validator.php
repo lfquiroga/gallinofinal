@@ -200,4 +200,19 @@ class Validator
 			$this->addError($fieldName, 'El campo ' . $fieldName . " debe tener al menos " . $minLength . " caracteres.");
 		}
 	}
+        
+	/**
+	 * Verifica que tenga al no mas de $minLength caracteres.
+	 *
+	 * @param string $fieldName
+	 * @param int $minLength
+	 */
+	public function _max($fieldName, $minLength)
+	{
+		$value = $this->data[$fieldName];
+                
+		if(strlen($value) > $minLength) {
+			$this->addError($fieldName, 'El campo ' . $fieldName . " debe tener menos de  " . $minLength . " caracteres.");
+		}
+	}
 }
