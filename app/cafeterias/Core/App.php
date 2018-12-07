@@ -91,7 +91,9 @@ class App
      */
     public static function redirect($path = '')
     {
+
         header('Location: ' . self::getUrlPath() . $path);
+        
         exit;
     }
 

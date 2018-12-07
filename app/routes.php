@@ -19,6 +19,8 @@ Lleva 3 par�metros:
 */
 Route::add('GET', '/', 'HomeController@index');
 
+Route::add('GET', '/home', 'HomeController@index');
+
 Route::add('GET', '/panel', 'HomeController@panel');
 
 Route::add('GET', '/vercafeteria/{id}', 'HomeController@ver');

@@ -32,10 +32,15 @@ if (Session::has('_errors')) {
         </tr>
       </thead>
       <tbody>
+        
 <?php
+
 if($eventos){
+    
 foreach ($eventos as $row) {
+    
     if ($row->estado != 2) {
+        
         echo("<tr>");
 
         if (isset($row->nombre)) {
@@ -69,6 +74,7 @@ foreach ($eventos as $row) {
         }
 
         echo("<td><a href='crearevento/" . $row->id . "'>EDITAR</a></td>");
+        
         echo("<td><input type='button' value ='Eliminar' class='eliminar' id='$row->id' ></td>");
 
         echo("</tr>");
@@ -80,10 +86,8 @@ foreach ($eventos as $row) {
       </tbody>
 
     </table>
-
   
   </div>
-
 
   <a class="btn btn-primary" data-toggle="collapse" href="#formulariousuario" role="button" aria-expanded="false" aria-controls="collapseExample">
     INGRESAR UNA NUEVO EVENTO

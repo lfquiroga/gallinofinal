@@ -121,7 +121,7 @@ class UserController{
      * @throws Exception
      */
     public function cargar() {
-        
+     
         $validator = new Validator($_POST, [
             'nombre' => ['required', 'min:3'],
             'apellido' => ['required', 'min:5'],
@@ -131,18 +131,24 @@ class UserController{
             'pass' => ['required', 'min:6'],
 
         ]);
-
+ 
         if (!$validator->passes()) {
 
             Session::set('_old_input', $_POST);
+            
             Session::set('_errors', $validator->getErrors());
+          
+         if ($_POST['ideditar']){
 
-
-            if ($_POST['ideditar']) {
-
-                App::redirect('abmusuarios/editar/' . $_POST['ideditar']);
+            $id=$_POST['ideditar'];
+            
+            $url='abmusuarios/editar/'.$id;
+            
+            App::redirect($url);
+             
             } else {
-                App::redirect('abmusuarios');
+                
+               App::redirect('abmusuarios');
             }
         }
 
@@ -163,7 +169,7 @@ class UserController{
             ]);
 
             // Redireccionamos.
-            App::redirect('abmusuarios');
+           // App::redirect('abmusuarios/editar/'.$_POST['ideditar']);
             
         } else {
 
@@ -178,7 +184,7 @@ class UserController{
                
             ]);
 
-            App::redirect('abmusuarios');
+           // App::redirect('abmusuarios');
           
             
         }

@@ -27,7 +27,8 @@ if ($_SESSION['Rol'] != 1 || $_SESSION['Rol'] != 4 ){
 class CafeteriasController {
 
    public function index() {
-       
+       echo('hi');
+       die();
         if($_SESSION['Rol'] == 1){
         // Traemos todas cafeterias.
         $cafeterias = Cafeteria::getAll();
@@ -51,12 +52,10 @@ class CafeteriasController {
     public function editar() {
         
         
-    if (!Session::has('Usuario') || $_SESSION['Rol'] != 1 ){
+      if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
 
-         $cafeterias= Cafeteria::getRanking();
-
-        View::render('front/inicioView', compact('cafeterias'));
-    }
+           App::redirect('home');
+        }
 
         $data = Route::getUrlParameters();
 
@@ -77,7 +76,10 @@ class CafeteriasController {
      */
     public function cargar() {
 
+   if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
 
+           App::redirect('home');
+        }
 
         $validator = new Validator($_POST, [
             'nombre' => ['required', 'min:3'],
@@ -178,6 +180,7 @@ class CafeteriasController {
      * @throws Exception
      */
     public function favoritos(){
+        
         
         $data = Route::getUrlParameters();
         

@@ -19,29 +19,32 @@ use cafeterias\Core\App;
  *
  * @author lquiroga
  */
-
 class EventosController {
-    
     /*
      * Obtengo los eventos de la db
      * 
      * @return Eventos
      */
-    
-    
-      public function index() {
-       
-        if($_SESSION['Rol'] == 1){
-        // Traemos todas cafeterias.
-        $eventos = Eventos::getAll();
-        
-        View::render('admin/abmeventos', compact('eventos'), 1);
-        
+
+    public function index() {
+
+        if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
+
+           App::redirect('home');
+           
         }
-    }
-    
-    
-     /**
+
+        
+        if ($_SESSION['Rol'] == 1) {
+            // Traemos todas cafeterias.
+            $eventos = Eventos::getAll();
+
+            View::render('admin/abmeventos', compact('eventos'), 1);
+        }
+ 
+        }
+
+    /**
      * Carga un nuevo evento
      *
      * 
@@ -50,106 +53,95 @@ class EventosController {
      */
     public function cargar() {
         
+        if(!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
+
+           App::redirect('home');
+        }
+
         $validator = new Validator($_POST, [
             'nombre' => ['required', 'min:3'],
             'titulo' => ['required', 'min:10', 'max:55'],
             'descripcion' => ['required', 'min:50']
-
         ]);
-        
 
-        
         if (!$validator->passes()) {
 
             Session::set('_old_input', $_POST);
-            Session::set('_errors', $validator->getErrors());
             
-            if (isset($_POST['ideditar'])){
+            Session::set('_errors', $validator->getErrors());
 
-                App::redirect('crearevento/'. $_POST['ideditar']);
-                
+            if (isset($_POST['ideditar'])) {
+
+                App::redirect('crearevento/' . $_POST['ideditar']);
             } else {
 
                 App::redirect('crearevento');
-                
             }
         }
-        
 
-                
-       
-        if (isset($_POST['ideditar'])){
-        
-          $evento = Eventos::update([
-                        'ideditar'      => $_POST['ideditar'],
-                        'nombre'        => $_POST['nombre'],
-                        'titulo'        => $_POST['titulo'],
-                        'descripcion'   => $_POST['descripcion'],
-                        'fecha_evento'  => $_POST['fecha_evento'],
-                        'estado'        => $_POST['estado'],
-               
+
+        if (isset($_POST['ideditar'])) {
+
+            $evento = Eventos::update([
+                        'ideditar' => $_POST['ideditar'],
+                        'nombre' => $_POST['nombre'],
+                        'titulo' => $_POST['titulo'],
+                        'descripcion' => $_POST['descripcion'],
+                        'fecha_evento' => $_POST['fecha_evento'],
+                        'estado' => $_POST['estado'],
             ]);
-           die();
-         
+            
         } else {
 
             $evento = Eventos::crear([
-                        'nombre'        => $_POST['nombre'],
-                        'titulo'        => $_POST['titulo'],
-                        'descripcion'   => $_POST['descripcion'],
-                        'fecha_evento'  => $_POST['fecha_evento'],
-                        'estado'        => $_POST['estado']
-
-               
+                        'nombre' => $_POST['nombre'],
+                        'titulo' => $_POST['titulo'],
+                        'descripcion' => $_POST['descripcion'],
+                        'fecha_evento' => $_POST['fecha_evento'],
+                        'estado' => $_POST['estado']
             ]);
-          }  
-          
+        }
         
-            if($evento){
 
-                  
-                  echo(strlen($_FILES['name']));
-                  
-                die();
-                
-                if (strlen($_FILES['name']) != 0) {   
+        if ($evento) {
 
-                $nombre = HandleImage::upImage($_FILES,$evento, 355 ,'img/eventos/');
-                var_dump($nombre);
-                die();
-                $path_imagen='img/eventos/'.$nombre;
-                
-                 $usuario = Eventos::updateImagen([
-                      'idevento'              => $evento,
-                      'ubicacion_imagen'      => $path_imagen
+            if (isset($_FILES['name'])) {
+
+                if (strlen($_FILES['name']) != 0) {
+
+                    $nombre = HandleImage::upImage($_FILES, $evento, 355, 'img/eventos/');
+
+                    $path_imagen = 'img/eventos/' . $nombre;
+
+                    $usuario = Eventos::updateImagen([
+                                'idevento' => $evento,
+                                'ubicacion_imagen' => $path_imagen
                     ]);
-               
                 }
             }
-                        
+        }
+
+        if (isset($_POST['ideditar'])) {
+
+            App::redirect('crearevento/' . $_POST['ideditar']);
+            
+        } else {
 
             App::redirect('crearevento');
-          
-            
-       
-        
+        }
     }
-    
-    
+
     /**
      * obtiene id de evento por url ,y nos lleva a editarlo
      *
      * @throws Exception
      */
     public function editar() {
-        
-        
-    if (!Session::has('Usuario') || $_SESSION['Rol'] != 1 ){
 
-         $cafeterias= Cafeteria::getRanking();
+        if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
 
-        View::render('front/inicioView', compact('cafeterias'));
-    }
+           App::redirect('home');
+        }
 
         $data = Route::getUrlParameters();
 
@@ -158,8 +150,7 @@ class EventosController {
         // Obtenemos las cafeteria que nos piden.
         $evento = new Eventos($id);
 
-        View::render('admin/editarevento', compact('evento'),1);
+        View::render('admin/editarevento', compact('evento'), 1);
     }
-    
 
 }

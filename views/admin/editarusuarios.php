@@ -11,6 +11,7 @@ $_old_input=get_object_vars($user);
 }
 
 if(Session::has('_errors')) {
+    
 	$_errors = Session::once('_errors');
 	$_old_input = Session::once('_old_input');
         
@@ -22,8 +23,6 @@ if(Session::has('_errors')) {
  
 <div class=" containertiposcargados">
   
-
-
     <h1>Editar un  usuario</h1>
     <form method="post" action="<?= \cafeterias\Core\App::urlTo('abmusuarios/editar/update');?>"  enctype="multipart/form-data">
 
@@ -71,12 +70,18 @@ if(Session::has('_errors')) {
           <option value="4"  <?php  if($_old_input['rol_usuario_id'] == 4 ){echo 'selected'; } ?>>Registrado</option>
         </select>
       </div>
+<?php
 
-     
-      
-
+     if (isset( $_old_input['id'])){
+         ?>
+    
     <input type="hidden" name="ideditar" value="<?= $_old_input['id'] ?>">
-
+     <?php }else{             
+     ?>
+     <input type="hidden" name="ideditar" value="<?= $user->getIdUser()?>">
+     <?php
+     }
+     ?>
       <input type="submit" class="login-button btn btn-default" value="Cargar Usuario"/>
 
     </form>

@@ -1,6 +1,7 @@
 <?php
 
 namespace cafeterias\Core;
+use cafeterias\Storage\Session;
 
 class View {
 
@@ -12,6 +13,10 @@ class View {
      */
     public static function render($__vista, $__data = [], $admin = null) {
 
+        if(Session::has('Rol')){
+            $admin = $_SESSION['Rol'];
+        }
+        
         foreach ($__data as $key => $value) {
             ${$key} = $value;
         }
@@ -20,12 +25,19 @@ class View {
         require App::getViewsPath() . '/templates/header.php';
 
         if ($admin == 1) {
+            
             require App::getViewsPath() . '/templates/menuadmin.php';
+            
         } else if($admin == 4){
+            
             require App::getViewsPath() . '/templates/menu_usuario.php';
+            
         }else{
+            
            require App::getViewsPath() . '/templates/menu.php'; 
+           
         }
+        
         require App::getViewsPath() . '/' . $__vista . ".php";
 
         // Incluimos el footer.

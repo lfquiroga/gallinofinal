@@ -70,8 +70,18 @@ if(Session::has('_errors')) {
          <label>Imagen actual</label>
          <img src="<?= \cafeterias\Core\App::urlTo($img_cafeteria) ?>">
       </div>
+<?php
 
-     <input type="hidden" name="ideditar" value="<?= $_old_input['id'] ?>">
+    if (isset( $_old_input['id'])){
+         ?>
+    
+    <input type="hidden" name="ideditar" value="<?= $_old_input['id'] ?>">
+     <?php }else{             
+     ?>
+     <input type="hidden" name="ideditar" value="<?= $cafeteria->getId()?>">
+     <?php
+     }
+     ?>
 
       <input type="submit" class="login-button btn btn-default" value="Cargar Cafeteria"/>
 
