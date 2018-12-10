@@ -13,10 +13,7 @@ class View {
      */
     public static function render($__vista, $__data = [], $admin = null) {
 
-        if(Session::has('Rol')){
-            $admin = $_SESSION['Rol'];
-        }
-        
+
         foreach ($__data as $key => $value) {
             ${$key} = $value;
         }

@@ -83,5 +83,9 @@ Route::add('GET', '/auth/logout', 'AuthController@logout');
 
 
 Route::add('GET', '/crearevento', 'EventosController@index');
+
 Route::add('POST', '/eventos/cargar', 'EventosController@cargar');
+
 Route::add('GET', '/crearevento/{id}', 'EventosController@editar');
+
+Route::add('POST', '/crearevento/eliminar', 'EventosController@eliminar');

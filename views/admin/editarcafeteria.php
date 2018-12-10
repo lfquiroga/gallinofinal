@@ -56,20 +56,36 @@ if(Session::has('_errors')) {
         <input type="email" name="email" id="email" value="<?php if(isset($_old_input['email'])){echo($_old_input['email']);} ?>" class="form-control"/>
           <p><?php if(isset($_errors['email'][0])){echo($_errors['email'][0]);}  ?> </p>
       </div>
-
-      <div class="form-group">
-        <label for="sitio">Sitio web</label>
-        <input type="text" name="sitio" id="sitio" value="<?php if(isset($_old_input['sitioweb'])){echo($_old_input['sitioweb']);} ?>" class="form-control" />
-         <p><?php if(isset($_errors['sitio'][0])){echo($_errors['sitio'][0]);}  ?> </p>
-      </div>
       
-      <div class="form-group">
-        <label for="sitio">Imagen Portada</label>
-        <input type="file" name="imagen" id="imagen" value="<?php if(isset($_old_input['imagen'])){echo($_old_input['imagen']);} ?>" class="form-control" />
-         <p><?php if(isset($_errors['imagen'][0])){echo($_errors['imagen'][0]);}  ?> </p>
-         <label>Imagen actual</label>
-         <img src="<?= \cafeterias\Core\App::urlTo($img_cafeteria) ?>">
-      </div>
+    <div class="row">
+      
+        <div class="col-lg-6 col-md-6">
+
+          <div class="form-group">
+            <label for="sitio">Sitio web</label>
+            <input type="text" name="sitio" id="sitio" value="<?php if(isset($_old_input['sitioweb'])){echo($_old_input['sitioweb']);} ?>" class="form-control" />
+             <p><?php if(isset($_errors['sitio'][0])){echo($_errors['sitio'][0]);}  ?> </p>
+          </div>
+          
+          <div class="form-group">
+            <label for="sitio">Descripcion</label>
+            <textarea cols="6" rows="10" name="descripcion" id="descripcion" class="form-control"><?php if(isset($_old_input['descripcion'])){echo(trim($_old_input['descripcion']));} ?></textarea>
+             <p><?php if(isset($_errors['descripcion'][0])){echo($_errors['descripcion'][0]);}  ?> </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+          <div class="form-group">
+            <label for="sitio">Imagen Portada</label>
+            <input type="file" name="imagen" id="imagen" value="<?php if(isset($_old_input['imagen'])){echo($_old_input['imagen']);} ?>" class="form-control" />
+             <p><?php if(isset($_errors['imagen'][0])){echo($_errors['imagen'][0]);}  ?> </p>
+             <label>Imagen actual</label>
+             <img src="<?= \cafeterias\Core\App::urlTo($img_cafeteria) ?>">
+          </div>
+        </div>
+        
+    </div>
 <?php
 
     if (isset( $_old_input['id'])){

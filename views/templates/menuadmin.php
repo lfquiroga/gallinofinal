@@ -30,6 +30,9 @@
                 <a id="" class="navbar-brand" rel="home" href="<?= \cafeterias\Core\App::urlTo('/');?>">
                   <img id="menuimg" style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>">
                 </a></li>
+                
+              <li><a href="<?= \cafeterias\Core\App::urlTo('panel_usuario');?>">Mis Datos</a></li>
+              <li><a href="<?= \cafeterias\Core\App::urlTo('favoritos');?>">Favoritos</a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('abmcafeterias');?>">Abm Cafeterias</a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('abmusuarios');?>">Abm Usuarios</a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('crearevento');?>">Crear evento</a></li>

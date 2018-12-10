@@ -206,8 +206,8 @@ class UserController{
 
         // Obtenemos las cafeteria que nos piden.
         $user = new User($id);
-
-        View::render('admin/editarusuarios', compact('user'));
+        
+        View::render('admin/editarusuarios', compact('user') ,1);
     }
     
     /**

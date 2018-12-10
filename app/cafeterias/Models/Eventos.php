@@ -191,6 +191,34 @@ class Eventos extends Modelo implements JsonSerializable {
         ]);
         
     }
+    
+    
+      
+    /**
+     *  delete
+     * @return bool
+     * @throws Exception
+     */
+    public static function delete($id_evento) {
+        
+        $db = Connection::getConnection();
+        
+       $query = "UPDATE eventos SET estado = 2  where id =:id";
+
+        $stmt = $db->prepare($query);
+
+
+        $exito = $stmt->execute([
+            'id' => $id_evento
+        ]);
+        
+        if($exito){
+            return true;
+        }
+      
+        
+
+    }
       
     /****** GETER ******/
       

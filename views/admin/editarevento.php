@@ -20,36 +20,47 @@ if (Session::has('_errors')) {
 ?>
 
 <div class="container" >
-  <h1>Editar  una  CAFETERIA </h1>
-
+  
   <div id="formulariousuario" class="collapse in">
 
-    <h1>Cargar nuevo evento</h1>
+    <h1>Editar nuevo evento</h1>
 
     <div class="col-lg-6 col-sm-6">
+      
       <form method="post" action="<?= \cafeterias\Core\App::urlTo('/eventos/cargar'); ?>"  enctype="multipart/form-data">
 
         <div class="form-group">
+          
           <label for="nombre">Nombre </label>
-          <input type="text" name="nombre" id="nombre" value="<?php if (isset($_old_input['nombre'])) {
-    echo($_old_input['nombre']);
-} ?>" class="form-control"/> <p><?php if (isset($_errors['nombre'][0])) {
-    echo($_errors['nombre'][0]);
-} ?> </p>
+          <input type="text" name="nombre" id="nombre" value="<?php
+          if (isset($_old_input['nombre'])) {
+              echo($_old_input['nombre']);
+          }
+          ?>" class="form-control"/> <p><?php
+                 if (isset($_errors['nombre'][0])) {
+                     echo($_errors['nombre'][0]);
+                 }
+          ?> </p>
+          
         </div>
 
         <div class="form-group">
           <label for="direccion">Titulo</label>
-          <input type="text" name="titulo" id="titulo" value="<?php if (isset($_old_input['titulo'])) {
-    echo($_old_input['titulo']);
-} ?>" class="form-control"/> <p><?php if (isset($_errors['titulo'][0])) {
-    echo($_errors['titulo'][0]);
-} ?> </p>
+          <input type="text" name="titulo" id="titulo" value="<?php
+                 if (isset($_old_input['titulo'])) {
+                     echo($_old_input['titulo']);
+                 }
+          ?>" class="form-control"/> <p><?php
+                 if (isset($_errors['titulo'][0])) {
+                     echo($_errors['titulo'][0]);
+                 }
+          ?> </p>
         </div>
 
         <div class="form-group">
           <label for="sucursal">Descripcion</label>
-          <textarea type="text" name="descripcion" id="descripcion" class="form-control"><?php
+          
+          <textarea type="text" name="descripcion" id="descripcion" class="form-control" rows="8" cols="10"><?php
               if (isset($_old_input['descripcion'])) {
                   echo($_old_input['descripcion']);
               }
@@ -65,18 +76,25 @@ if (Session::has('_errors')) {
 
         <div class="form-group">
           <label for="estado">Estado</label>
-          <select id="estado" name="estado" class="form-control">
+          
+          <select id="estado" name="estado" class="form-control" style="margin-top: 20px;">
 
             <option value="s" >Seleccione</option>
-            <option value="1" <?php if ($_old_input['estado'] == 1) {
+            <option value="1" <?php
+              if ($_old_input['estado'] == 1) {
                   echo 'selected';
-              } ?>>Activo</option>
-            <option value="2" <?php if ($_old_input['estado'] == 2) {
+              }
+              ?>>Activo</option>
+            <option value="2" <?php
+              if ($_old_input['estado'] == 2) {
                   echo 'selected';
-              } ?>>Inactivo</option>
-            <option value="3" <?php if ($_old_input['estado'] == 3) {
+              }
+              ?>>Inactivo</option>
+            <option value="3" <?php
+              if ($_old_input['estado'] == 3) {
                   echo 'selected';
-              } ?>>Pendiente</option>
+              }
+              ?>>Pendiente</option>
 
           </select>
           <p><?php
@@ -96,13 +114,13 @@ if (Session::has('_errors')) {
         <label for="fecha_evento">Fecha evento</label>
         <input type="date"  name="fecha_evento" id="fecha_evento" value="<?php
         if (isset($_old_input['fecha_evento'])) {
-            echo($_old_input['fecha']);
+            echo($_old_input['fecha_evento']);
         }
               ?>" class="form-control"/>
         <p><?php
-        if (isset($_errors['fecha_evento'][0])) {
-            echo($_errors['fecha_evento'][0]);
-        }
+              if (isset($_errors['fecha_evento'][0])) {
+                  echo($_errors['fecha_evento'][0]);
+              }
               ?> </p>
 
       </div>
@@ -113,9 +131,11 @@ if (Session::has('_errors')) {
         <div class="form-group">
 
 
-          <p><?php if (isset($_errors['imagen'][0])) {
-            echo($_errors['imagen'][0]);
-        } ?> </p>
+          <p><?php
+            if (isset($_errors['imagen'][0])) {
+                echo($_errors['imagen'][0]);
+            }
+            ?> </p>
           <label>Imagen actual</label>
           <img src="<?= \cafeterias\Core\App::urlTo($_old_input['ubicacion_imagen']) ?>">
         </div>
@@ -124,7 +144,7 @@ if (Session::has('_errors')) {
       if (isset($_old_input['imagen'])) {
           echo($_old_input['imagen']);
       }
-              ?>" class="form-control" />
+            ?>" class="form-control" />
         <p><?php
       if (isset($_errors['imagen'][0])) {
           echo($_errors['imagen'][0]);
@@ -146,7 +166,7 @@ if (isset($_old_input['id'])) {
 ?>
 
 
-      <input type="submit" class="login-button btn btn-default" value="Cargar Evento"/>
+          <input type="submit" class="login-button btn btn-default" value="Cargar Evento" style="margin-top: 10px;"/>
 
     </div>
     </form>

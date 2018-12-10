@@ -27,8 +27,7 @@ if ($_SESSION['Rol'] != 1 || $_SESSION['Rol'] != 4 ){
 class CafeteriasController {
 
    public function index() {
-       echo('hi');
-       die();
+
         if($_SESSION['Rol'] == 1){
         // Traemos todas cafeterias.
         $cafeterias = Cafeteria::getAll();
@@ -88,6 +87,7 @@ class CafeteriasController {
             'telefono' => ['required', 'min:6'],
             'sitio' => ['required', 'min:6'],
             'email' => ['required', 'min:6'],
+            'descripcion' => ['required', 'min:30']
         ]);
 
         if (!$validator->passes()) {
@@ -113,6 +113,7 @@ class CafeteriasController {
                         'telefono' => $_POST['telefono'],
                         'sitio' => $_POST['sitio'],
                         'email' => $_POST['email'],
+                        'descripcion' => $_POST['descripcion'],
                         'id' => $_POST['ideditar']
             ]);
             
@@ -167,7 +168,9 @@ class CafeteriasController {
       $user = Cafeteria::delete($_POST['ideliminar']);
       
       if($user){
+          
            App::redirect('abmcafeterias');
+           
       }
 
      

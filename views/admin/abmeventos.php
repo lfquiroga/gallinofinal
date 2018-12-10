@@ -26,7 +26,6 @@ if (Session::has('_errors')) {
           <th>Descripcion</th> 
           <th>Fecha</th> 
           <th>Estado</th>          
-          <th>Estado</th> 
           <th>Editar</th> 
           <th>Eliminar</th> 
         </tr>
@@ -56,7 +55,7 @@ foreach ($eventos as $row) {
         }
 
         if (isset($row->descripcion)) {
-            echo('<td>' . $row->descripcion . '</td>');
+            echo('<td>' . substr($row->descripcion , 0, 70). '....</td>');
         } else {
             echo('<td> - </td>');
         }
@@ -195,6 +194,41 @@ if (isset($_errors['rol'][0])) {
 
 
   </div>
+
+
+  
+  
+  
+  
+  
+<!-- Modal -->
+<div class="modal fade" id="eliminar">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="mainTitleModal">Eliminar cafeteria</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="<?= \cafeterias\Core\App::urlTo('crearevento/eliminar'); ?>" method="POST" accept-charset="utf-8" id="registrousuario">
+
+          <p>¿Desea eliminar esta cafeteria?</p>
+
+          <input type="hidden" name="ideliminar" id="id_eliminar" value="">
+
+          <input type="button" value="Cancelar" id="cancelar" class="regbutton" />
+          <input type="submit" value="Aceptar" id="aceptar" class="regbutton" />
+
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
   <script>

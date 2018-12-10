@@ -120,7 +120,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
         $query = "INSERT INTO cafeteria (usuarios_id,nombre,direccion,telefono
                 ,email,sitioweb,sucursal ,puntaje ,id_estado  )
 		VALUES( :usuarios_id , :nombre , :direccion , :telefono
-                , :email , :sitioweb , :sucursal , 0, 1)";
+                , :email , :sitioweb , :sucursal , :descripcion, 0, 1)";
 
         $stmt = $db->prepare($query);
     
@@ -132,7 +132,8 @@ class Cafeteria extends Modelo implements JsonSerializable {
             'telefono' => $datos['telefono'],
             'email' => $datos['email'],
             'sitioweb' => $datos['sitio'],
-            'sucursal' => $datos['sucursal']
+            'sucursal' => $datos['sucursal'],
+            'descripcion' => $datos['descripcion']
         ]);
         
 
@@ -168,6 +169,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
                 telefono = :telefono,
                 email = :email ,
                 sitioweb = :sitioweb ,
+                descripcion= :descripcion,
                 sucursal =:sucursal where id =:id";
 
         $stmt = $db->prepare($query);
@@ -180,6 +182,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
             'telefono' => $datos['telefono'],
             'email' => $datos['email'],
             'sitioweb' => $datos['sitio'],
+            'descripcion' => $datos['descripcion'],
             'sucursal' => $datos['sucursal'],
             'id' => $datos['id']
         ]);
@@ -268,6 +271,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
     
 
     }
+    
     /**
      *  delete
      * @return bool
@@ -290,8 +294,6 @@ class Cafeteria extends Modelo implements JsonSerializable {
             return true;
         }
       
-        
-
     }
     
     /**
@@ -357,13 +359,18 @@ class Cafeteria extends Modelo implements JsonSerializable {
     public function getId() {
         return $this->id;
     }
+    
 
+  
     /**
      * @param mixed $id
      */
     public function setdescripcion($descripcion) {
+        
       if ($descripcion) {
+          
             $this->descripcion = $descripcion;
+            
         } else {
             $this->descripcion = 'Cafeteria sin descripcion';
         }
@@ -373,7 +380,9 @@ class Cafeteria extends Modelo implements JsonSerializable {
      * @return mixed
      */
     public function getdescripcion() {
+        
         return $this->descripcion;
+        
     }
 
     /**

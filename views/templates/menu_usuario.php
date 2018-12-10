@@ -1,4 +1,8 @@
+<?php 
 
+use cafeterias\Storage\Session;
+
+?>
   <nav class="mainheader navbar navbar-default topNavigationBar">
         <div class="container usrmn">
           <?php
@@ -32,7 +36,16 @@
                 </a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('panel_usuario');?>">Mis Datos</a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('favoritos');?>">Favoritos</a></li>
-             
+             <?php
+             if(Session::get('Rol') == 1){
+             ?>
+              <li><a href="<?= \cafeterias\Core\App::urlTo('abmcafeterias');?>">Abm Cafeterias</a></li>
+              <li><a href="<?= \cafeterias\Core\App::urlTo('abmusuarios');?>">Abm Usuarios</a></li>
+              <li><a href="<?= \cafeterias\Core\App::urlTo('crearevento');?>">Crear evento</a></li>
+              <?php
+             }
+              ?>
+              
               <hr class="usermnresponsive hrstylemnrespond">
               <li class="usermnresponsive"><button value="Acceso & Registro" id="logi2"/></li>
             </ul>

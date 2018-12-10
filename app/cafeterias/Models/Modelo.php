@@ -40,8 +40,10 @@ class Modelo
 	public function getByPk($pk)
 	{
 		$db = DBConnection::getConnection();
+                
 		$query = "SELECT * FROM " . $this->table . "
 				WHERE " . $this->primaryKey . " = ?";
+                
 		$stmt = $db->prepare($query);
 
 		$exito = $stmt->execute([$pk]);

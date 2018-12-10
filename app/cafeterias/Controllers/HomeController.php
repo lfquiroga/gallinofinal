@@ -44,7 +44,7 @@ class HomeController {
             $data['favoritas'] = $fav;
         }
 
-        View::render('front/inicioView', compact('data'));
+        View::render('front/inicioView', compact('data') );
     }
 
     public function panel() {

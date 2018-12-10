@@ -105,20 +105,19 @@ class EventosController {
 
         if ($evento) {
 
-            if (isset($_FILES['name'])) {
-
-                if (strlen($_FILES['name']) != 0) {
-
+                if($_FILES["imagen"]['name'] != '' && $_FILES["imagen"]['name'] != 'image/png'){                   
+                
                     $nombre = HandleImage::upImage($_FILES, $evento, 355, 'img/eventos/');
-
+         
                     $path_imagen = 'img/eventos/' . $nombre;
 
                     $usuario = Eventos::updateImagen([
                                 'idevento' => $evento,
                                 'ubicacion_imagen' => $path_imagen
                     ]);
-                }
+                
             }
+            
         }
 
         if (isset($_POST['ideditar'])) {
@@ -141,6 +140,7 @@ class EventosController {
         if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
 
            App::redirect('home');
+           
         }
 
         $data = Route::getUrlParameters();
@@ -151,6 +151,28 @@ class EventosController {
         $evento = new Eventos($id);
 
         View::render('admin/editarevento', compact('evento'), 1);
+    }
+    
+    
+        
+    /**
+     * Eliminar una cafeteria solo cambia su estado a inactiva
+     *
+     * @return cafeteria
+     * @throws Exception
+     */
+    public function eliminar(){
+        
+        
+      $user = Eventos::delete($_POST['ideliminar']);
+      
+      if($user){
+          
+           App::redirect('crearevento');
+           
+      }
+
+     
     }
 
 }

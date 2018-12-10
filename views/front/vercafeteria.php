@@ -3,96 +3,69 @@
 use cafeterias\Storage\Session;
 use cafeterias\Core\Route;
 
-if(isset($data['cafeteria'])){
+if (isset($data['cafeteria'])) {
     $cafeteria = $data['cafeteria'];
-}  
-if(isset($data['comentarios'])){
+}
+if (isset($data['comentarios'])) {
     $comentarios = $data['comentarios'];
-}else{
-    $comentarios=null;
-}  
-
+} else {
+    $comentarios = null;
+}
 ?>
 
-<div class="row">
-          <div class="col-md-12 detailcafe">
-            <div class="container">
-              <div>
-                <h1><?php echo $cafeteria->getNombre() ?></h1>
-                <p>Zona: <?php echo $cafeteria->getSucursal() ?></p>
-                <p>Categoria: Especialidad</p>
-                <p>Calificaci&oacute;n: <img src="../img/stars5.png" alt="" /></p>
-              </div>
-              <div></div>
-              <div class="horarios">
-                <p>Lunes a viernes de 9:00 a 20:00</p>
-                <p>Sabados de 10:00 a 18:00</p>
-                <p>Domingos: cerrado</p>
-              </div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 detailcafe">
+      <div class="container">
+        <div>
+          <h1><?php echo $cafeteria->getNombre() ?></h1>
+          <p>Zona: <?php echo $cafeteria->getSucursal() ?></p>
+          <p>Categoria: Especialidad</p>
+          <p>Calificaci&oacute;n: <img src="../img/stars5.png" alt="" /></p>
+        </div>
+        <div></div>
+        <div class="horarios">
+          <p>Lunes a viernes de 9:00 a 20:00</p>
+          <p>Sabados de 10:00 a 18:00</p>
+          <p>Domingos: cerrado</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <section class="mainwrapperC" >
+      <div class="infoCafe">
+
+        <div class="col-lg-6 col-md-6 cafe_col_50">
+
+          <div class="detalleResumenC">
+            
+            <img src="../img/especificaciones.jpg" alt="" /><br/><br/>
+            <p> <?php echo nl2br($cafeteria->getdescripcion())?></p>
+            
           </div>
-  
-        <section class="mainwrapperC" >
-          <div class="infoCafe">
-            
-              <h2 class="Hs">Especialistas en caf&eacute; y un ambiente &uacute;nico</h2>
-              
-              <div class="resumenC">
-                
-                <div class="detalleResumenC">
-                  <img src="../img/especificaciones.jpg" alt="" />
-                  <p> <?php echo $cafeteria->getdescripcion() ?></p>
-                  <img src="<?= \cafeterias\Core\App::urlTo($cafeteria->obtenerimgportada($cafeteria->getId()) ) ?>">
-                </div>
-                
-                <div class="mapa">
-                  
-                  <img src="../img/map.jpg" alt="" />
-                 
-                </div>
-                
-              </div>
-             
+
+        </div>
+        <div class="col-lg-6 col-md-6 cafe_col_50">
           
-         <div id="comentario_<?= $cafeteria->getId() ?>" class="col-lg-12 collapse in">
+          <div class="mapa">
 
-            <?php
-            
-            if($comentarios){
-            echo('<h3>Comentarios</h3>');
-            foreach ($comentarios as $row) {
+            <img class="img-responsive" src="<?= \cafeterias\Core\App::urlTo($cafeteria->obtenerimgportada($cafeteria->getId())) ?>">
 
-                ?>
+          </div>
 
-            
-                    <div class="media-left">
-                        <a href="#">
-                          
-                           <img class="media-object" src="<?= \cafeterias\Core\App::urlTo( $row["ubicacion_foto"]) ?>" alt="Foto de usuario">
+        </div>
 
-                        </a>
-                    </div>
+      </div>
+      
 
-                    <div class="media-body">
-                     <h4 class="media-heading"><?= $row['usuario'] .' - '.$row['fecha']?></h4>
-                     <?= $row['comentario']?>
-                    </div>
-               
-
-            <?php
-            }}else{
-            ?>
         
-                    <div class="media-body">
-                     <h4 class="media-heading">Todavia no hay comentarios , puedes dejar el primero</h4>                     
-                    </div>
-               
-            
-            <?php
-                
-            }
-            
-            if (Session::has('id')){
+      <div id="comentario_<?= $cafeteria->getId() ?>" class="col-lg-12 collapse in comentarios_seccion">
+ 
+        <?php
+        
+        if (Session::has('id')){
                       
             ?>
             
@@ -111,12 +84,56 @@ if(isset($data['comentarios'])){
               }
               
             ?>
-            </div>
-        </div>
-    </div>
- </section>
+            <?php
+            
+            if($comentarios){
+                
+            echo('<h3>Comentarios</h3>');
+            
+            foreach ($comentarios as $row) {
+           
+                ?>
+        <div class="comment-box">
+                    <div class="media-left">
+                        <a href="#">
+                          
+                           <img class="media-object" src="<?= \cafeterias\Core\App::urlTo( $row["ubicacion_foto"]) ?>" alt="Foto de usuario">
 
-  
+                        </a>
+                    </div>
+
+                    <div class="media-body">
+                     <h4 class="media-heading"><?= $row['usuario'] .' - '.$row['fecha']?></h4>
+                     <?= $row['comentario']?>
+                    </div>
+          </div>
+               
+
+            <?php
+            }}else{
+            ?>
+        
+                    <div class="media-body">
+                     <h4 class="media-heading">Todavia no hay comentarios , puedes dejar el primero</h4>                     
+                    </div>
+               
+            
+            <?php
+                
+            }
+            
+           ?>
+            </div>
+        
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
   <!-- Modal -->
 <div class="modal fade" id="mainmodallogin">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -198,6 +215,8 @@ if(isset($data['comentarios'])){
     </div>
   </div>
 </div>
+  
+  
   
 <script>
 
