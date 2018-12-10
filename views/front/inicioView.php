@@ -150,7 +150,7 @@ if (Session::has('_errors')){
               <div class='caption'>
                 <h3><?= $row->getTitulo() ?></h3>
                 <hr>
-                <p><a href='#' class='btn btn-default vermasnotabtn' role='button'>Ver m&aacute;s</a></p>
+                <p><a href='<?= \cafeterias\Core\App::urlTo('verevento/' . $row->getId()) ?>' class='btn btn-default vermasnotabtn' role='button'>Ver m&aacute;s</a></p>
               </div>
             </div>
           </div>
@@ -240,6 +240,7 @@ if (Session::has('_errors')){
             </form>
             <?php
             if(Session::has('Usuario_registrado')){
+                
                 $usuario = Session::once('Usuario_registrado');
                 
                 echo("<p>Bienvenido $usuario tu registro ha sido exitoso . ya puedes iniciar sesion.</p>");

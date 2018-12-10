@@ -20,13 +20,14 @@ use cafeterias\Core\App;
  * @author lquiroga
  */
 class EventosController {
+    
     /*
      * Obtengo los eventos de la db
      * 
      * @return Eventos
      */
 
-    public function index() {
+    public function index()     {
 
         if (!Session::has('Usuario') || $_SESSION['Rol'] != 1) {
 
@@ -42,7 +43,7 @@ class EventosController {
             View::render('admin/abmeventos', compact('eventos'), 1);
         }
  
-        }
+    }
 
     /**
      * Carga un nuevo evento
@@ -173,6 +174,40 @@ class EventosController {
       }
 
      
+    }
+    
+    /**
+     * Obtengo cafeteria en base al id pasado por url
+     */
+        public function ver() {
+
+        $data = Route::getUrlParameters();
+
+        $id = $data['id'];
+
+        // Obtenemos las cafeteria que nos piden.
+        $evento = new Eventos($id);
+        
+        View::render('front/verevento', compact('evento'));
+
+
+
+    }
+    
+    /**
+     * Recibe por post id de usuario y de evento y 
+     * los inserta en la tabla correspondiente
+     * 
+     */
+        public function asistir() {
+
+      $evento = Eventos::asistir([
+                        'idusuario' => $_POST['id_user'],
+                        'idevento' => $_POST['id_evento']
+            ]);
+
+
+
     }
 
 }

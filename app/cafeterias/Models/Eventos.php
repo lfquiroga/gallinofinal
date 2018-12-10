@@ -34,11 +34,11 @@ class Eventos extends Modelo implements JsonSerializable {
        
         return [
             'id'                => $this->getId(),
-            'nombre'            => $this->getUserId(),
-            'titulo	'       => $this->getNombre(),
-            'descripcion'       => $this->getDireccion(),
-            'fecha_evento'      => $this->getTelefono(),
-            'estado'             => $this->getemail()
+            'nombre'            => $this->getNombre(),
+            'titulo	'       => $this->getTitulo(),
+            'descripcion'       => $this->getDescripcion(),
+            'fecha_evento'      => $this->getFecha_evento(),
+            'estado'             => $this->getEstado()
         ];
     }
 
@@ -80,7 +80,7 @@ class Eventos extends Modelo implements JsonSerializable {
       }
       
       
-      /**
+     /**
      * Creaun evento
      *
      * @param $datos array
@@ -125,7 +125,7 @@ class Eventos extends Modelo implements JsonSerializable {
     }
     
     
-      /**
+     /**
      * Modificar evento
      *
      * @param $datos array
@@ -218,6 +218,51 @@ class Eventos extends Modelo implements JsonSerializable {
       
         
 
+    }
+    
+    
+     /**
+     * Creaun evento
+     *
+     * @param $datos array
+     * @return cafeteria
+     * @throws Exception
+     */
+    public static function asistir($datos) {
+            
+        $db = Connection::getConnection();
+        
+        $query = "INSERT INTO eventos (	nombre ,titulo ,descripcion , fecha_evento  , estado )
+		VALUES( :nombre , :titulo , :descripcion , :fecha_evento , :estado)";           
+      
+        $stmt = $db->prepare($query);
+    
+
+        $exito = $stmt->execute([
+            'nombre' => $datos['nombre'],
+            'titulo' => $datos['titulo'],
+            'descripcion' => $datos['descripcion'],
+            'fecha_evento' => $datos['fecha_evento'],
+            'estado' => $datos['estado']
+        ]);
+        
+
+        
+        if ($exito) {
+            
+            $evento = new Eventos;
+            
+            $datos['id'] = $db->lastInsertId();
+            
+            $evento->cargarDatosDeArray($datos);
+
+            return $datos['id'];
+            
+        } else {
+            //return false;
+            print_r($stmt->errorInfo());
+            throw new \Exception('Error al crear el evento .');
+        }
     }
       
     /****** GETER ******/

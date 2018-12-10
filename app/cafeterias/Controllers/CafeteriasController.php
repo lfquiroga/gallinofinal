@@ -35,6 +35,7 @@ class CafeteriasController {
         View::render('admin/abmcafeterias', compact('cafeterias'), 1);
         
         }
+        
     }
 
 

@@ -89,3 +89,7 @@ Route::add('POST', '/eventos/cargar', 'EventosController@cargar');
 Route::add('GET', '/crearevento/{id}', 'EventosController@editar');
 
 Route::add('POST', '/crearevento/eliminar', 'EventosController@eliminar');
+
+Route::add('GET', '/verevento/{id}', 'EventosController@ver');
+
+Route::add('POST', '/asistirevento', 'EventosController@asistir');
