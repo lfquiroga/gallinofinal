@@ -22,13 +22,13 @@ class Eventos extends Modelo implements JsonSerializable {
         'descripcion', 	
         'fecha_evento', 	
         'ubicacion_imagen', 	
-        'estado', 
-
+        'estado'
     ];
+    
     protected $method;
 
     /**
-     * M�todo de serializaci�n a JSON.
+     * Metodo de serializacion a JSON.
      */
     public function jsonSerialize() {
        
@@ -38,14 +38,14 @@ class Eventos extends Modelo implements JsonSerializable {
             'titulo	'       => $this->getTitulo(),
             'descripcion'       => $this->getDescripcion(),
             'fecha_evento'      => $this->getFecha_evento(),
-            'estado'             => $this->getEstado()
+            'estado'            => $this->getEstado()
         ];
     }
 
     /**
      * Carga los datos de una fila de la base a las propiedades.
      *
-     * @param $fila array 	La fila de la base de datos.
+     * @param $fila array La fila de la base de datos.
      */
     public function cargarDatosDeArray($fila) {
         
@@ -164,8 +164,7 @@ class Eventos extends Modelo implements JsonSerializable {
         }
     }
       
-    
-       
+
       
       /**
      * Creaun evento
@@ -192,8 +191,7 @@ class Eventos extends Modelo implements JsonSerializable {
         
     }
     
-    
-      
+
     /**
      *  delete
      * @return bool
@@ -222,7 +220,7 @@ class Eventos extends Modelo implements JsonSerializable {
     
     
      /**
-     * Creaun evento
+     * Inserta un registro en la tabla eventos_usuario
      *
      * @param $datos array
      * @return cafeteria
@@ -232,36 +230,62 @@ class Eventos extends Modelo implements JsonSerializable {
             
         $db = Connection::getConnection();
         
-        $query = "INSERT INTO eventos (	nombre ,titulo ,descripcion , fecha_evento  , estado )
-		VALUES( :nombre , :titulo , :descripcion , :fecha_evento , :estado)";           
+        $query = "INSERT INTO eventos_usuarios (id_usuario , id_evento) 
+            VALUES (:id_usuario , :id_evento)";		
       
         $stmt = $db->prepare($query);
-    
 
         $exito = $stmt->execute([
-            'nombre' => $datos['nombre'],
-            'titulo' => $datos['titulo'],
-            'descripcion' => $datos['descripcion'],
-            'fecha_evento' => $datos['fecha_evento'],
-            'estado' => $datos['estado']
+            'id_usuario' => $datos['idusuario'],
+            'id_evento' => $datos['idevento']            
         ]);
         
-
-        
         if ($exito) {
-            
-            $evento = new Eventos;
-            
-            $datos['id'] = $db->lastInsertId();
-            
-            $evento->cargarDatosDeArray($datos);
-
-            return $datos['id'];
+          
+            return 'OK';
             
         } else {
             //return false;
             print_r($stmt->errorInfo());
-            throw new \Exception('Error al crear el evento .');
+            throw new \Exception('Error en la inscripcion .');
+        }
+    }
+    
+    
+     /**
+     * Devuelve una lista de usuarios que asisten a un evento
+     *
+     * @param $id int
+     * @return bool
+     * @throws Exception
+     */
+    public static function asistentes($id) {
+           
+        $db = Connection::getConnection();
+        
+        $query = "SELECT * FROM eventos_usuarios WHERE id_evento = :id";		
+      
+        $stmt = $db->prepare($query);
+
+        $exito = $stmt->execute([
+            'id' =>$id            
+        ]);
+        
+        $salida = [];
+        
+         while (
+            $fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $salida[] = $fila;
+        }
+
+        if ($salida) {
+          
+            return $salida;
+            
+        } else {
+            //return false;
+            print_r($stmt->errorInfo());
+            throw new \Exception('Error en la inscripcion .');
         }
     }
       
@@ -294,6 +318,10 @@ class Eventos extends Modelo implements JsonSerializable {
     function getEstado() {
         return $this->estado;
     }
+    
+    function getUsuarioAsiste() {
+        return $this->asiste ;
+    }
 
     /******SETER******/
     
@@ -323,6 +351,10 @@ class Eventos extends Modelo implements JsonSerializable {
 
     function setEstado($estado) {
         $this->estado = $estado;
+    }
+    
+    function setUsuarioAsiste($asiste) {
+        $this->asiste = $asiste;
     }
 
 

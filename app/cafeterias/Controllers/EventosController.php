@@ -173,7 +173,6 @@ class EventosController {
            
       }
 
-     
     }
     
     /**
@@ -184,11 +183,31 @@ class EventosController {
         $data = Route::getUrlParameters();
 
         $id = $data['id'];
-
+        
         // Obtenemos las cafeteria que nos piden.
         $evento = new Eventos($id);
         
-        View::render('front/verevento', compact('evento'));
+       if(Session::has('Usuario') ){
+            
+            $asiste = $evento->asistentes($evento->getId());
+            
+            $anotado=false;
+            
+        foreach ($asiste as $row){
+
+           if($row['id_usuario'] == Session::get('id')){
+
+                $anotado = true;
+          }  
+        }
+        
+      }
+      
+      $data['asiste']=$anotado;
+      $data['evento']=$evento;
+        
+
+        View::render('front/verevento', compact('data'));
 
 
 
@@ -199,14 +218,14 @@ class EventosController {
      * los inserta en la tabla correspondiente
      * 
      */
-        public function asistir() {
+     public function asistir() {
 
       $evento = Eventos::asistir([
                         'idusuario' => $_POST['id_user'],
                         'idevento' => $_POST['id_evento']
             ]);
-
-
+      
+       
 
     }
 

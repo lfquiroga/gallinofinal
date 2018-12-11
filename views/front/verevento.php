@@ -3,14 +3,18 @@
 use cafeterias\Storage\Session;
 use cafeterias\Core\Route;
 
+
 if (isset($data['evento'])) {
+    
     $evento = $data['evento'];
 }
-if (isset($data['comentarios'])) {
-    $comentarios = $data['comentarios'];
+
+if (isset($data['asiste'])) {
+    $asiste = $data['asiste'];
 } else {
-    $comentarios = null;
+    $asiste = false;
 }
+
 ?>
 
 <div class="container">
@@ -21,12 +25,23 @@ if (isset($data['comentarios'])) {
   <?php
 
         if (Session::has('id')) {
+            if($asiste != true){
             ?>
             <div class="col-lg-12 col-md-12 ">
-              <input type="button" value="Asistire al evento" id="<?= Session::has('id').'-'. $evento->getid() ?>" class="asistir"> 
-            </div>  <br/><br/>
+              <input type="button" value="Asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() ?>" class="asistir"> 
+            </div>
+    <br/><br/>
         <?php
-        }else{                    
+            }else{
+?>
+     <div class="col-lg-12 col-md-12 ">
+              <input type="button" value="NO asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() ?>" class="noasistir"> 
+            </div>
+    <br/><br/>
+                <?php
+            } 
+            
+            }else{                    
         ?>
          <p>Registrate para poder anotarte en el evento.</p>
         <?php
@@ -92,12 +107,11 @@ if (isset($data['comentarios'])) {
               <input type="password" class="form-control" name="password" placeholder="Password">
               <div class="boxbtnvmas"><input type="submit" value="Ingresar" /></div>
 
-<?php if (isset($_errors['nocoincide'])) {
-    echo('<p>' . $_errors['nocoincide'] . '</p>');
-}
-?> 
-
-              <?php if (isset($_errors['nousuario'])) {
+                <?php if (isset($_errors['nocoincide'])) {
+                    echo('<p>' . $_errors['nocoincide'] . '</p>');
+                }
+                
+                if (isset($_errors['nousuario'])) {
                   echo('<p>' . $_errors['nousuario'] . '</p>');
               }
               ?> 
@@ -166,28 +180,33 @@ if (isset($data['comentarios'])) {
     /**
      * Asistir al evento
      */
-    $("#asistir").click(function () {
+    $(".asistir").click(function () {
 
-      var id_user = this.id.split('_')[0];
-      var id_evento = this.id.split('_')[1];
+      var id_user = this.id.split('-')[0];
+      
+      var id_evento = this.id.split('-')[1];
 
-      url = location.pathname;
+        url_location=location.pathname;
+          
+          url_cortada= url_location.split("/");
+          
+         url='/'+url_cortada[1]+'/'+url_cortada[2];
 
-      data = {
+      data2 = {
         'id_user': id_user,
         'id_evento': id_evento
         
       };
-
+      
       $.ajax({
-        data: data,
-        url: url + '/asistirevento',
+        data: data2,
+        url: url+'/asistirevento',
         type: 'post',
         success: function (response) {
 
-          if (response.indexOf("ERROR") == -1) {
+          if (response.indexOf("ERROR") != -1) {
 
-            $('.btncomentarios span').css('display', 'none');
+           
 
           }
         }
