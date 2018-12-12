@@ -230,9 +230,16 @@ class Eventos extends Modelo implements JsonSerializable {
             
         $db = Connection::getConnection();
         
+        if($datos['asiste'] == 1){
+            
         $query = "INSERT INTO eventos_usuarios (id_usuario , id_evento) 
-            VALUES (:id_usuario , :id_evento)";		
-      
+            VALUES (:id_usuario , :id_evento)";	
+        
+        }else{
+            
+        $query = "DELETE FROM  eventos_usuarios 
+            WHERE (id_usuario = :id_usuario AND  id_evento =:id_evento)";		
+        }
         $stmt = $db->prepare($query);
 
         $exito = $stmt->execute([
@@ -277,16 +284,11 @@ class Eventos extends Modelo implements JsonSerializable {
             $fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $salida[] = $fila;
         }
-
-        if ($salida) {
+       
           
             return $salida;
             
-        } else {
-            //return false;
-            print_r($stmt->errorInfo());
-            throw new \Exception('Error en la inscripcion .');
-        }
+       
     }
       
     /****** GETER ******/

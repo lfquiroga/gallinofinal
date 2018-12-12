@@ -4,8 +4,6 @@
 use cafeterias\Storage\Session;
 use cafeterias\Core\Route;
 
-
-
 if(Session::has('_errors')){
     
 	$_errors = Session::once('_errors');

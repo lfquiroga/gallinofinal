@@ -187,6 +187,8 @@ class EventosController {
         // Obtenemos las cafeteria que nos piden.
         $evento = new Eventos($id);
         
+         $anotado=false;
+        
        if(Session::has('Usuario') ){
             
             $asiste = $evento->asistentes($evento->getId());
@@ -207,7 +209,7 @@ class EventosController {
       $data['evento']=$evento;
         
 
-        View::render('front/verevento', compact('data'));
+      View::render('front/verevento', compact('data'));
 
 
 
@@ -222,7 +224,8 @@ class EventosController {
 
       $evento = Eventos::asistir([
                         'idusuario' => $_POST['id_user'],
-                        'idevento' => $_POST['id_evento']
+                        'idevento' => $_POST['id_evento'],
+                        'asiste' => $_POST['asiste'],
             ]);
       
        

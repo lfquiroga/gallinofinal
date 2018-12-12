@@ -25,18 +25,17 @@ if (isset($data['asiste'])) {
   <?php
 
         if (Session::has('id')) {
+            
             if($asiste != true){
             ?>
-            <div class="col-lg-12 col-md-12 ">
-              <input type="button" value="Asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() ?>" class="asistir"> 
-            </div>
+              <input type="button" value="Asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 1'?>" class="asistir"> 
     <br/><br/>
         <?php
-            }else{
+            }else{         
 ?>
-     <div class="col-lg-12 col-md-12 ">
-              <input type="button" value="NO asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() ?>" class="noasistir"> 
-            </div>
+
+              <input type="button" value="No asistir al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 0'?>" class="asistir"> 
+
     <br/><br/>
                 <?php
             } 
@@ -69,16 +68,6 @@ if (isset($data['asiste'])) {
           </div>
 
         </div>
-        
-        <?php
-        if (Session::has('id')) {
-            ?>
-            <div class="col-lg-12 col-md-12 ">
-              <input type="button" value="Asistire al evento" id="asistir"> 
-            </div>  
-        <?php
-        }
-        ?>
 
     </section>
   </div>
@@ -185,16 +174,19 @@ if (isset($data['asiste'])) {
       var id_user = this.id.split('-')[0];
       
       var id_evento = this.id.split('-')[1];
+      
+        var asiste = this.id.split('-')[2];
 
         url_location=location.pathname;
           
-          url_cortada= url_location.split("/");
+        url_cortada= url_location.split("/");
           
-         url='/'+url_cortada[1]+'/'+url_cortada[2];
+        url='/'+url_cortada[1]+'/'+url_cortada[2];
 
       data2 = {
-        'id_user': id_user,
-        'id_evento': id_evento
+        'id_user'   : id_user,
+        'id_evento' :id_evento,
+        'asiste'    :asiste
         
       };
       
@@ -203,12 +195,9 @@ if (isset($data['asiste'])) {
         url: url+'/asistirevento',
         type: 'post',
         success: function (response) {
-
-          if (response.indexOf("ERROR") != -1) {
-
-           
-
-          }
+            
+        location.reload()
+         
         }
 
       });

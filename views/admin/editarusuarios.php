@@ -4,16 +4,25 @@
 use cafeterias\Storage\Session;
 use cafeterias\Core\Route;
 
+
+
 if($user){
     
-$_old_input=get_object_vars($user);
+    $_old_input=get_object_vars($user);
+
+    $rol=$_old_input['rol_usuario_id'];
+    
+    $estado=$_old_input['estados_id'];
 
 }
 
 if(Session::has('_errors')) {
     
-	$_errors = Session::once('_errors');
-	$_old_input = Session::once('_old_input');
+    $_errors = Session::once('_errors');
+    $_old_input = Session::once('_old_input');
+
+    $rol=$_old_input['rol'];
+    $estado=$_old_input['estado'];
         
 }   
 
@@ -54,9 +63,9 @@ if(Session::has('_errors')) {
         <label for="estado">Estado</label>
         <select id="estado" name="estado" class="form-control">
           <option value="s">Seleccione</option>
-          <option value="1" <?php  if($_old_input['estados_id'] == 1 ){echo 'selected'; } ?>>Activo</option>
-          <option value="2"  <?php  if($_old_input['estados_id'] == 2 ){echo 'selected'; } ?>>Inactivo</option>
-          <option value="3"  <?php  if($_old_input['estados_id'] == 3 ){echo 'selected'; } ?>>Pendiente</option>
+          <option value="1" <?php  if($estado== 1 ){echo 'selected'; } ?>>Activo</option>
+          <option value="2"  <?php  if($estado == 2 ){echo 'selected'; } ?>>Inactivo</option>
+          <option value="3"  <?php  if($estado == 3 ){echo 'selected'; } ?>>Pendiente</option>
         </select>
       </div>
       
@@ -64,10 +73,10 @@ if(Session::has('_errors')) {
         <label for="rol">Rol usuario</label>
         <select id="rol" name="rol" class="form-control">
           <option value="s">Seleccione</option>
-          <option value="1"  <?php  if($_old_input['rol_usuario_id'] == 1 ){echo 'selected'; } ?>>Admin</option>
-          <option value="2"  <?php  if($_old_input['rol_usuario_id'] == 2 ){echo 'selected'; } ?>>Cafeteria</option>
-          <option value="3"  <?php  if($_old_input['rol_usuario_id'] == 3 ){echo 'selected'; } ?>>Editor</option>
-          <option value="4"  <?php  if($_old_input['rol_usuario_id'] == 4 ){echo 'selected'; } ?>>Registrado</option>
+          <option value="1"  <?php  if($rol == 1 ){echo 'selected'; } ?>>Admin</option>
+          <option value="2"  <?php  if($rol == 2 ){echo 'selected'; } ?>>Cafeteria</option>
+          <option value="3"  <?php  if($rol == 3 ){echo 'selected'; } ?>>Editor</option>
+          <option value="4"  <?php  if($rol == 4 ){echo 'selected'; } ?>>Registrado</option>
         </select>
       </div>
 <?php

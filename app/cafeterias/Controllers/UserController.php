@@ -169,22 +169,23 @@ class UserController{
             ]);
 
             // Redireccionamos.
-           // App::redirect('abmusuarios/editar/'.$_POST['ideditar']);
+            App::redirect('abmusuarios/editar/'.$_POST['ideditar']);
             
         } else {
 
-
+            $pass = Hash::encrypt($_POST['pass']);
+ 
             $usuario = User::cargar([
                         'nombre' => $_POST['nombre'],
                         'apellido' => $_POST['apellido'],
                         'email' => $_POST['email'],
                         'rol_usuario_id' => $_POST['rol'],
                         'estados_id' => $_POST['estado'],
-                        'pass' => $_POST['pass'],
+                        'pass' => $pass
                
             ]);
 
-           // App::redirect('abmusuarios');
+           App::redirect('abmusuarios');
           
             
         }
@@ -281,7 +282,7 @@ class UserController{
                         'ubicacion_foto' => $path_imagen
                
             ]);
-
+          
             // Redireccionamos.
             App::redirect('panel_usuario');
             
