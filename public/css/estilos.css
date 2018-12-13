@@ -564,3 +564,24 @@ comentarios_seccion{
 
     padding: 10px 0px;
 }
+
+.error{
+    color: red;
+    font-weight: 500;
+}
+
+.boton{
+    background-color: #91303a!important;
+    color: white!important;
+    font-weight: bold!important;
+        padding: 6px 12px!important;
+    border-radius: 5px;
+}
+.boton2{
+    background-color: lightblue!important;
+
+}
+
+.containertiposcargados{
+    margin: 25px 0px;
+}

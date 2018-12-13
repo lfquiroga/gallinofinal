@@ -101,7 +101,7 @@ if (Session::has('_errors')) {
       </div>
 
 
-      <input type="submit" class="login-button btn btn-default" value="Modificar Datos "/>
+      <input type="submit" class="login-button btn btn-default boton" value="Modificar Datos "/>
 
       <input type="hidden" name="ideditar" value="<?= $usuario->getIdUser() ?>" />
 

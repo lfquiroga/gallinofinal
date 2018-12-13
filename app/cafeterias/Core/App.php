@@ -1,6 +1,7 @@
 <?php
 
 namespace cafeterias\Core;
+use cafeterias\Storage\Session;
 
 /**
  * Class App
@@ -52,7 +53,9 @@ class App
        
             } else {
                 
-            throw new \Exception("No existe la ruta especificada.");
+                header('Location: ' . self::getUrlPath() );
+                
+            //throw new \Exception("No existe la ruta especificada.");
             // Opcionalmente, podemos directamente llamar a una p�gina que muestre un error 404 o una p�gina
             // template que diga que el recurso no se encontró.
         }

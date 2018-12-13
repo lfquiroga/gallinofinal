@@ -17,6 +17,77 @@ if(Session::has('_errors')){
  
 <div class=" containertiposcargados">
   
+   <a class="btn btn-primary" data-toggle="collapse" href="#formulariousuario" role="button" aria-expanded="false" aria-controls="collapseExample">
+    INGRESAR UNA NUEVO USUARIO
+  </a>
+
+  
+  <div id="formulariousuario" class="<?php if (isset($_errors) || isset($ideditar)){
+
+    echo('collapse in');
+} else {
+    echo('collapse ');
+}
+?>">
+
+    <h1>Cargar nuevo  usuario</h1>
+    <form method="post" action="<?= \cafeterias\Core\App::urlTo('abmusuarios/cargar') ?>"  enctype="multipart/form-data">
+
+      <div class="form-group">
+        <label for="nombre">Nombre </label>
+        <input type="text" name="nombre" id="nombre" value="<?php if(isset($_old_input['nombre'])){echo($_old_input['nombre']);} ?>" class="form-control"/>
+        <p class="error"><?php if(isset($_errors['nombre'][0])){echo($_errors['nombre'][0]);}  ?> </p>
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Apellido</label>
+        <input type="text" name="apellido" id="apellido" value="<?php if(isset($_old_input['apellido'])){echo($_old_input['apellido']);} ?>" class="form-control"/>
+        <p  class="error"><?php if(isset($_errors['apellido'][0])){echo($_errors['apellido'][0]);}  ?> </p>
+      </div>
+      
+      <div class="form-group">
+        <label for="sucursal">Email</label>
+        <input type="text" name="email" id="email" value="<?php if(isset($_old_input['email'])){echo($_old_input['email']);} ?>" class="form-control"/>
+         <p  class="error"><?php if(isset($_errors['email'][0])){echo($_errors['email'][0]);}  ?> </p>
+      </div>
+      
+       <div class="form-group">
+        <label for="sucursal">Password</label>
+        <input type="text" name="pass" id="pass" value="<?php if(isset($_old_input['pass'])){echo($_old_input['pass']);} ?>" class="form-control"/>
+         <p  class="error"><?php if(isset($_errors['pass'][0])){echo($_errors['pass'][0]);}  ?> </p>
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado" class="form-control">
+          <option value="s">Seleccione</option>
+          <option value="1">Activo</option>
+          <option value="2">Inactivo</option>
+          <option value="3">Pendiente</option>
+        </select>
+         <p  class="error"><?php if(isset($_errors['rol'][0])){echo('Debe seleccionar un estado para el usuario');}  ?> </p>
+      </div>
+      
+      <div class="form-group">
+        <label for="rol">Rol usuario</label>
+        
+        <select id="rol" name="rol" class="form-control">
+          <option value="s">Seleccione</option>
+          <option value="1">Admin</option>
+          <option value="2">Cafeteria</option>
+          <option value="3">Editor</option>
+          <option value="3">Registrado</option>
+        </select>
+         <p  class="error"><?php if(isset($_errors['rol'][0])){echo('Debe seleccionar un rol para el usuario');}  ?> </p>
+      </div>
+
+      <input type="submit" class="login-button btn btn-default boton" value="Cargar Usuario"/>
+
+    </form>
+    <br/>
+    <br/>
+  </div>
+  
     <h2>Usuarios cargados en el sistema</h2>
 
     <table id="usuariostabla" class="display" style="width:100%">
@@ -71,8 +142,8 @@ if($row->estados_id != 2){
     
    
    
-    echo("<td><a href='abmusuarios/editar/".$row->id."'>EDITAR</a></td>");
-    echo("<td><input type='button' value ='Eliminar' class='eliminar' id='$row->id' ></td>");
+    echo("<td><a href='abmusuarios/editar/".$row->id."'  class='login-button btn btn-default boton2'>EDITAR</a></td>");
+    echo("<td><input type='button' value ='Eliminar' class='eliminar boton' id='$row->id' ></td>");
 
     echo("</tr>");
 }
@@ -87,76 +158,7 @@ if($row->estados_id != 2){
   </div>
   
 
-  <a class="btn btn-primary" data-toggle="collapse" href="#formulariousuario" role="button" aria-expanded="false" aria-controls="collapseExample">
-    INGRESAR UNA NUEVO USUARIO
-  </a>
-
-  
-  <div id="formulariousuario" class="<?php if (isset($_errors) || isset($ideditar)){
-
-    echo('collapse in');
-} else {
-    echo('collapse ');
-}
-?>">
-
-    <h1>Cargar nuevo  usuario</h1>
-    <form method="post" action="<?= \cafeterias\Core\App::urlTo('abmusuarios/cargar') ?>"  enctype="multipart/form-data">
-
-      <div class="form-group">
-        <label for="nombre">Nombre </label>
-        <input type="text" name="nombre" id="nombre" value="<?php if(isset($_old_input['nombre'])){echo($_old_input['nombre']);} ?>" class="form-control"/>
-        <p><?php if(isset($_errors['nombre'][0])){echo($_errors['nombre'][0]);}  ?> </p>
-      </div>
-
-      <div class="form-group">
-        <label for="direccion">Apellido</label>
-        <input type="text" name="apellido" id="apellido" value="<?php if(isset($_old_input['apellido'])){echo($_old_input['apellido']);} ?>" class="form-control"/>
-        <p><?php if(isset($_errors['apellido'][0])){echo($_errors['apellido'][0]);}  ?> </p>
-      </div>
-      
-      <div class="form-group">
-        <label for="sucursal">Email</label>
-        <input type="text" name="email" id="email" value="<?php if(isset($_old_input['email'])){echo($_old_input['email']);} ?>" class="form-control"/>
-         <p><?php if(isset($_errors['email'][0])){echo($_errors['email'][0]);}  ?> </p>
-      </div>
-      
-       <div class="form-group">
-        <label for="sucursal">Password</label>
-        <input type="text" name="pass" id="pass" value="<?php if(isset($_old_input['pass'])){echo($_old_input['pass']);} ?>" class="form-control"/>
-         <p><?php if(isset($_errors['pass'][0])){echo($_errors['pass'][0]);}  ?> </p>
-      </div>
-
-      <div class="form-group">
-        <label for="estado">Estado</label>
-        <select id="estado" name="estado" class="form-control">
-          <option value="s">Seleccione</option>
-          <option value="1">Activo</option>
-          <option value="2">Inactivo</option>
-          <option value="3">Pendiente</option>
-        </select>
-         <p><?php if(isset($_errors['rol'][0])){echo('Debe seleccionar un estado para el usuario');}  ?> </p>
-      </div>
-      
-      <div class="form-group">
-        <label for="rol">Rol usuario</label>
-        
-        <select id="rol" name="rol" class="form-control">
-          <option value="s">Seleccione</option>
-          <option value="1">Admin</option>
-          <option value="2">Cafeteria</option>
-          <option value="3">Editor</option>
-          <option value="3">Registrado</option>
-        </select>
-         <p><?php if(isset($_errors['rol'][0])){echo('Debe seleccionar un rol para el usuario');}  ?> </p>
-      </div>
-
-     
-
-      <input type="submit" class="login-button btn btn-default" value="Cargar Usuario"/>
-
-    </form>
-  </div>
+ 
     
     <!-- Modal -->
 <div class="modal fade" id="eliminar">

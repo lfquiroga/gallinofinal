@@ -118,9 +118,9 @@ class Cafeteria extends Modelo implements JsonSerializable {
         $db = Connection::getConnection();
         
         $query = "INSERT INTO cafeteria (usuarios_id,nombre,direccion,telefono
-                ,email,sitioweb,sucursal ,puntaje ,id_estado  )
+                ,email,sitioweb,sucursal ,descripcion ,puntaje ,id_estado  )
 		VALUES( :usuarios_id , :nombre , :direccion , :telefono
-                , :email , :sitioweb , :sucursal , :descripcion, 0, 1)";
+                , :email , :sitioweb , :sucursal , :descripcion, 1, 1)";
 
         $stmt = $db->prepare($query);
     
@@ -170,6 +170,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
                 email = :email ,
                 sitioweb = :sitioweb ,
                 descripcion= :descripcion,
+                id_estado = :estado ,
                 sucursal =:sucursal where id =:id";
 
         $stmt = $db->prepare($query);
@@ -183,6 +184,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
             'email' => $datos['email'],
             'sitioweb' => $datos['sitio'],
             'descripcion' => $datos['descripcion'],
+            'estado' => $datos['id_estado'],
             'sucursal' => $datos['sucursal'],
             'id' => $datos['id']
         ]);
@@ -210,7 +212,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
         
         $db = Connection::getConnection();
         
-        $query = "SELECT * FROM cafeteria ORDER BY ranking ASC LIMIT 6";
+        $query = "SELECT * FROM cafeteria where id_estado = 1 ORDER BY id ASC LIMIT 6";
         
         $stmt = $db->prepare($query);
         

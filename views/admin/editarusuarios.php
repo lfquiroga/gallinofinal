@@ -33,30 +33,36 @@ if(Session::has('_errors')) {
 <div class=" containertiposcargados">
   
     <h1>Editar un  usuario</h1>
-    <form method="post" action="<?= \cafeterias\Core\App::urlTo('abmusuarios/editar/update');?>"  enctype="multipart/form-data">
-
+    <form class="row" method="post" action="<?= \cafeterias\Core\App::urlTo('abmusuarios/editar/update');?>"  enctype="multipart/form-data">
+    
+    <div class="col-lg-6 col-md-6">
+        
       <div class="form-group">
         <label for="nombre">Nombre </label>
         <input type="text" name="nombre" id="nombre" value="<?php if(isset($_old_input['nombre'])){echo($_old_input['nombre']);} ?>" class="form-control"/>
-        <p><?php if(isset($_errors['nombre'][0])){echo($_errors['nombre'][0]);}  ?> </p>
+        <p class="error" ><?php if(isset($_errors['nombre'][0])){echo($_errors['nombre'][0]);}  ?> </p>
       </div>
 
       <div class="form-group">
         <label for="direccion">Apellido</label>
         <input type="text" name="apellido" id="apellido" value="<?php if(isset($_old_input['apellido'])){echo($_old_input['apellido']);} ?>" class="form-control"/>
-        <p><?php if(isset($_errors['apellido'][0])){echo($_errors['apellido'][0]);}  ?> </p>
+        <p class="error" ><?php if(isset($_errors['apellido'][0])){echo($_errors['apellido'][0]);}  ?> </p>
       </div>
       
       <div class="form-group">
         <label for="sucursal">Email</label>
         <input type="text" name="email" id="email" value="<?php if(isset($_old_input['email'])){echo($_old_input['email']);} ?>" class="form-control"/>
-         <p><?php if(isset($_errors['email'][0])){echo($_errors['email'][0]);}  ?> </p>
+         <p class="error" ><?php if(isset($_errors['email'][0])){echo($_errors['email'][0]);}  ?> </p>
       </div>
+    
+    </div>
       
+      
+     <div class="col-lg-6 col-md-6"> 
         <div class="form-group">
         <label for="pass">Password</label>
         <input type="text" name="pass" id="pass" value="<?php if(isset($_old_input['pass'])){echo($_old_input['pass']);} ?>" class="form-control"/>
-         <p><?php if(isset($_errors['pass'][0])){echo($_errors['pass'][0]);}  ?> </p>
+         <p class="error" ><?php if(isset($_errors['pass'][0])){echo($_errors['pass'][0]);}  ?> </p>
       </div>
       
       <div class="form-group">
@@ -79,6 +85,7 @@ if(Session::has('_errors')) {
           <option value="4"  <?php  if($rol == 4 ){echo 'selected'; } ?>>Registrado</option>
         </select>
       </div>
+      </div>
 <?php
 
      if (isset( $_old_input['id'])){
@@ -91,7 +98,7 @@ if(Session::has('_errors')) {
      <?php
      }
      ?>
-      <input type="submit" class="login-button btn btn-default" value="Cargar Usuario"/>
+      <input type="submit" class="login-button btn btn-default boton" value="Cargar Usuario"/>
 
     </form>
   </div>

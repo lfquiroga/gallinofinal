@@ -36,7 +36,7 @@ if (Session::has('_errors')) {
           if (isset($_old_input['nombre'])) {
               echo($_old_input['nombre']);
           }
-          ?>" class="form-control"/> <p><?php
+          ?>" class="form-control"/> <p class="error"><?php
                  if (isset($_errors['nombre'][0])) {
                      echo($_errors['nombre'][0]);
                  }
@@ -50,7 +50,7 @@ if (Session::has('_errors')) {
                  if (isset($_old_input['titulo'])) {
                      echo($_old_input['titulo']);
                  }
-          ?>" class="form-control"/> <p><?php
+          ?>" class="form-control"/> <p class="error"><?php
                  if (isset($_errors['titulo'][0])) {
                      echo($_errors['titulo'][0]);
                  }
@@ -65,7 +65,7 @@ if (Session::has('_errors')) {
                   echo($_old_input['descripcion']);
               }
               ?></textarea>
-          <p><?php
+          <p class="error"><?php
               if (isset($_errors['descripcion'][0])) {
                   echo($_errors['descripcion'][0]);
               }
@@ -79,7 +79,6 @@ if (Session::has('_errors')) {
           
           <select id="estado" name="estado" class="form-control" style="margin-top: 20px;">
 
-            <option value="s" >Seleccione</option>
             <option value="1" <?php
               if ($_old_input['estado'] == 1) {
                   echo 'selected';
@@ -97,7 +96,7 @@ if (Session::has('_errors')) {
               ?>>Pendiente</option>
 
           </select>
-          <p><?php
+          <p class="error"><?php
               if (isset($_errors['rol'][0])) {
                   echo('Debe seleccionar un estado para el usuario');
               }
@@ -117,7 +116,7 @@ if (Session::has('_errors')) {
             echo($_old_input['fecha_evento']);
         }
               ?>" class="form-control"/>
-        <p><?php
+        <p class="error"><?php
               if (isset($_errors['fecha_evento'][0])) {
                   echo($_errors['fecha_evento'][0]);
               }
@@ -131,7 +130,7 @@ if (Session::has('_errors')) {
         <div class="form-group">
 
 
-          <p><?php
+          <p class="error"> <?php
             if (isset($_errors['imagen'][0])) {
                 echo($_errors['imagen'][0]);
             }
@@ -145,7 +144,8 @@ if (Session::has('_errors')) {
           echo($_old_input['imagen']);
       }
             ?>" class="form-control" />
-        <p><?php
+        
+        <p class="error"><?php
       if (isset($_errors['imagen'][0])) {
           echo($_errors['imagen'][0]);
       }
@@ -166,7 +166,7 @@ if (isset($_old_input['id'])) {
 ?>
 
 
-          <input type="submit" class="login-button btn btn-default" value="Cargar Evento" style="margin-top: 10px;"/>
+          <input type="submit" class="login-button btn btn-default boton" value="Cargar Evento" style="margin-top: 10px;"/>
 
     </div>
     </form>

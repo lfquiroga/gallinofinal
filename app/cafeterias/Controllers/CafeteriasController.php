@@ -90,7 +90,8 @@ class CafeteriasController {
             'email' => ['required', 'min:6'],
             'descripcion' => ['required', 'min:30']
         ]);
-
+        
+        //Valdamos los datos
         if (!$validator->passes()) {
 
             Session::set('_old_input', $_POST);
@@ -106,7 +107,7 @@ class CafeteriasController {
         }
 
         if (isset($_POST['ideditar'])) {
-
+           
             $cafeterias = Cafeteria::update([
                         'nombre' => $_POST['nombre'],
                         'direccion' => $_POST['direccion'],
@@ -115,7 +116,8 @@ class CafeteriasController {
                         'sitio' => $_POST['sitio'],
                         'email' => $_POST['email'],
                         'descripcion' => $_POST['descripcion'],
-                        'id' => $_POST['ideditar']
+                        'id' => $_POST['ideditar'],
+                        'id_estado' => $_POST['estado']
             ]);
             
             $id_cafeteria=$_POST['ideditar'];
@@ -129,7 +131,9 @@ class CafeteriasController {
                         'sucursal' => $_POST['sucursal'],
                         'telefono' => $_POST['telefono'],
                         'sitio' => $_POST['sitio'],
-                        'email' => $_POST['email']
+                        'email' => $_POST['email'],
+                        'descripcion' => $_POST['descripcion'],
+                        'estado' => $_POST['estado']
             ]);
            
         }

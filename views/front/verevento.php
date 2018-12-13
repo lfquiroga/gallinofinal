@@ -28,13 +28,13 @@ if (isset($data['asiste'])) {
             
             if($asiste != true){
             ?>
-              <input type="button" value="Asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 1'?>" class="asistir"> 
+              <input type="button" value="Asistire al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 1'?>" class="asistir boton"> 
     <br/><br/>
         <?php
             }else{         
 ?>
 
-              <input type="button" value="No asistir al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 0'?>" class="asistir"> 
+              <input type="button" value="No asistir al evento" id="<?= Session::get('id').'-'. $evento->getid() .'- 0'?>" class="asistir boton"> 
 
     <br/><br/>
                 <?php

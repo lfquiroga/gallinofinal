@@ -75,7 +75,7 @@ if (isset($data['comentarios'])) {
 
                 <textarea name="comentario" id="<?= $cafeteria->getId()?>" class="form-control" rows="4" cols="50"> </textarea>  
 
-                <input type="button" id="<?= $cafeteria->getId() ?>" class="comentar" value="Dejar comentario">
+                <input type="button" id="<?= $cafeteria->getId() ?>" class="comentar boton" value="Dejar comentario">
                 
             </form> 
          
