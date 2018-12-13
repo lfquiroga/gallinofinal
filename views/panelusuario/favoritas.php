@@ -11,11 +11,13 @@ if (Session::has('_errors')) {
 if(isset($data['cafeterias'])){
     $cafeterias = $data['cafeterias'];
 }
+
+
 ?>
 <div class="container" >
 
   <div class="container">
-    <h2 class="titlesection">Ranking de Cafeter&iacuteas favoritas</h2>
+    <h2 class="titlesection">Cafeter&iacute;as favoritas</h2>
 
 <?php
 
@@ -23,7 +25,7 @@ if(isset($cafeterias)){
     
 foreach ($cafeterias as $datos) {
 
-    $imagen = $datos->obtenerimgportada($datos->getId());
+    $imagen = $datos->ObtenerImgportada($datos->getId());
 
     $comentarios = $data['comentarios'][$datos->getId()];
     ?>

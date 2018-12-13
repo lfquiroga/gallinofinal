@@ -1,0 +1,9 @@
+USUARIO ADMIN :
+
+user :admin@cafeteriasba.com.ar
+pass :123123
+
+USUARIO REGISTRADO:
+
+user :Federico@hotmail.com
+pass :123123

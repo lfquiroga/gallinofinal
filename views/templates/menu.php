@@ -33,19 +33,20 @@ if(Session::has('Usuario')){?>
         </button>
         <a href="" rel="home" class="navbar-left">  </a>
           <a id="logoCafeteriasba" class="navbar-brand" rel="home" href="#">
-            <img style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
+            <img style="width: 80px;" alt=" Cafeter&iacute;as BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
       
         <span class="description-site"></span>
       </div>
 
       <div class="collapse navbar-collapse" id="navbar-1">
-        <ul class="mainmenucentral nav navbar-nav"><li><a href="<?= \cafeterias\Core\App::urlTo('/') ?>">Home</a></li>
-          <li><a href="#">Cafeter&iacute;as</a></li>
+        <ul class="mainmenucentral nav navbar-nav">
+          <li><a href="<?= \cafeterias\Core\App::urlTo('/') ?>">Home</a></li>
+          <li><a href="<?= \cafeterias\Core\App::urlTo('/todas') ?>">Cafeter&iacute;as</a></li>
           <li><a href=""><img class="logoCafeteriasba2" alt="Cafeter&iacute;as BA" style="width: 89px; margin-top: -10px;" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a></li>
-          <li class="fixdistnacelogo"><a href="#">Disfrut&aacute Caf&eacute</a></li>
+          <li class="fixdistnacelogo"><a href="#">Disfrut&aacute; Caf&eacute;</a></li>
           <li class="fixdistnacelogo"><a href="#">Accesorios</a></li>         
          
-          <li class="usermnresponsive">  <hr class="usermnresponsive hrstylemnrespond" /> <input  type="value" value="Acceso & Registro" id="logi2"/> </li>
+          <li class="usermnresponsive">  <hr class="usermnresponsive hrstylemnrespond" /> <input  type="text" value="Acceso & Registro" id="logi2"/> </li>
         </ul>
       </div>
 

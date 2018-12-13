@@ -4,14 +4,18 @@ namespace cafeterias\Controllers;
 
 use cafeterias\Storage\Session;
 use cafeterias\Auth\Auth;
+use cafeterias\Controllers\FavoritosController;
 use cafeterias\Core\Hash;
 use cafeterias\Models\User;
 use cafeterias\Validation\Validator;
 use cafeterias\Core\HandleImage;
 use cafeterias\Models\Cafeteria;
+use cafeterias\Models\Favoritos;
 use cafeterias\Core\View;
 use cafeterias\Core\Route;
 use cafeterias\Core\App;
+
+
 
 
 class UserController{
@@ -19,10 +23,9 @@ class UserController{
   public static function traerTodos(){
             
     if (!Session::has('Usuario') || $_SESSION['Rol'] != 1 ){
-    
-     $cafeterias= Cafeteria::getRanking();
-     
-    View::render('front/inicioView', compact('cafeterias'));
+
+            header('Location: ' . App::getUrlPath('data') );
+
 }
 
             if($_SESSION['Rol'] == 1 ){
@@ -48,15 +51,24 @@ class UserController{
 
          if (!Session::has('Rol')){
 
-          $cafeterias= Cafeteria::getRanking();
+            header('Location: ' . App::getUrlPath('data') );
+                 
+         }
 
-         View::render('front/inicioView', compact('cafeterias'));
-    }
+            $usuario=new User($_SESSION['id']);
+            
+             $data['usuario']=$usuario;
+            
+             $favoritas = Favoritos::getById($_SESSION['id'], 'id_usuario');
+            
+              foreach ($favoritas as $row) {
 
-                $usuario=new User($_SESSION['id']);
-                
+                $cafeteria_obj = new Cafeteria($row['id_cafeteria']);
 
-                View::render('panelusuario/panel_usuario', compact('usuario'),4);
+                $data['estado_comentario'][$cafeteria_obj->getId()] = $row['nuevo_comentario'];
+            }
+
+            View::render('panelusuario/panel_usuario', compact('data'),4);
 			
     }
        
@@ -228,10 +240,7 @@ class UserController{
      
     }
     
-    
-    
-    
-    
+
     
     /**
      * Edita el perfil de cualuier usuario registrado que no sea administrador
@@ -257,23 +266,20 @@ class UserController{
             Session::set('_old_input', $_POST);
             Session::set('_errors', $validator->getErrors());
 
-
-           
             App::redirect('panel_usuario');
             
         }
         
-        $path_imagen='img/usuarios/nopicture.png';
-        
-        if ($_FILES) {
+        $path_imagen='img/noimage.png';
+   
+        if ($_FILES['name'] != "") {
             
                 $nombre = HandleImage::upImage($_FILES, $_POST['ideditar'], 200 ,'img/usuarios/');
                 
                 $path_imagen='img/usuarios/'.$nombre;
                
             }
-            
-             
+                         
           $usuario = User::update([
                         'nombre'         => $_POST['nombre'],
                         'apellido'       => $_POST['apellido'],
@@ -284,11 +290,7 @@ class UserController{
             ]);
           
             // Redireccionamos.
-            App::redirect('panel_usuario');
-            
-         
-        
+            App::redirect('panel_usuario'); 
     }
-
 }
 

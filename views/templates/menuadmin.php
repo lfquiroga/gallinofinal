@@ -19,7 +19,7 @@
             </button>
             
               <a id="logoCafeteriasba" class="navbar-brand" rel="home" href="<?= \cafeterias\Core\App::urlTo('/');?>">
-                <img style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
+                <img style="width: 80px;" alt=" Cafeter&iacute;as BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
            
             <span class="description-site"></span>
           </div>
@@ -28,7 +28,7 @@
             <ul class="mainmenuleft nav navbar-nav">
               <li>
                 <a id="" class="navbar-brand" rel="home" href="<?= \cafeterias\Core\App::urlTo('/');?>">
-                  <img id="menuimg" style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>">
+                  <img id="menuimg" style="width: 80px;" alt=" Cafeter&iacute;as BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>">
                 </a></li>
                 
               <li><a href="<?= \cafeterias\Core\App::urlTo('panel_usuario');?>">Mis Datos</a></li>

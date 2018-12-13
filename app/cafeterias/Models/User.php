@@ -323,7 +323,16 @@ class User extends Modelo implements JsonSerializable
                         */
                 public function getFoto()
                 {
-                                return $this->ubicacion_foto;
+                    if(isset($this->ubicacion_foto)){
+                        
+                        return $this->ubicacion_foto;
+                        
+                    }else{
+                        
+                        return '';
+                        
+                    }
+                             
                 }
 
                 /**
@@ -331,7 +340,7 @@ class User extends Modelo implements JsonSerializable
                         */
                 public function setFoto($foto)
                 {
-
+                    
                     $this->ubicacion_foto = $foto;                    
 
                 }
@@ -399,7 +408,15 @@ class User extends Modelo implements JsonSerializable
                 */
                 public function getNombre()
                 {
-                                return $this->nombre;
+                    if(isset($this->nombre)){
+                        
+                        return $this->nombre;
+                        
+                    }else{
+                        
+                        return '';
+                        
+                    }
                 }
 
                 /**
@@ -415,7 +432,15 @@ class User extends Modelo implements JsonSerializable
                 */
                 public function getApellido()
                 {
-                                return $this->apellido;
+                   if(isset($this->apellido)){
+                        
+                        return $this->apellido;
+                        
+                    }else{
+                        
+                        return '';
+                        
+                    }
                 }
 
                 /**

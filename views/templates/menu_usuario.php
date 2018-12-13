@@ -2,6 +2,18 @@
 
 use cafeterias\Storage\Session;
 
+$comentarios=0;
+
+if(Session::get('Rol') != 1){
+    foreach ($data['estado_comentario'] as $row){
+
+        $comentarios += $row;
+
+    }
+}else{
+    $comentarios=0;
+}
+
 ?>
   <nav class="mainheader navbar navbar-default topNavigationBar">
         <div class="container usrmn">
@@ -23,7 +35,7 @@ use cafeterias\Storage\Session;
             </button>
             
               <a id="logoCafeteriasba" class="navbar-brand" rel="home" href="<?= \cafeterias\Core\App::urlTo('/');?>">
-                <img style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
+                <img style="width: 80px;" alt=" Cafeter&iacute;as BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>"></a>
            
             <span class="description-site"></span>
           </div>
@@ -32,11 +44,19 @@ use cafeterias\Storage\Session;
             <ul class="mainmenuleft nav navbar-nav">
               <li>
                 <a id="" class="navbar-brand" rel="home" href="<?= \cafeterias\Core\App::urlTo('/');?>">
-                  <img id="menuimg" style="width: 80px;" alt="Cafeter&iacuteas BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>">
+                  <img id="menuimg" style="width: 80px;" alt=" Cafeter&iacute;as BA" src="<?= \cafeterias\Core\App::urlTo('img/logoCafeteriasBA.svg') ?>">
                 </a></li>
               <li><a href="<?= \cafeterias\Core\App::urlTo('panel_usuario');?>">Mis Datos</a></li>
-              <li><a href="<?= \cafeterias\Core\App::urlTo('favoritos');?>">Favoritos</a></li>
-             <?php
+              <?php
+              if($comentarios == 0){
+                ?>
+                <li><a href="<?= \cafeterias\Core\App::urlTo('favoritos');?>">Favoritos</a></li>
+                <?php 
+              }else{ ?>
+                <li><a href="<?= \cafeterias\Core\App::urlTo('favoritos');?>">Favoritos  <span class="glyphicon glyphicon-comment"></span> <span class="glyphicon" id="comment-value"><?=$comentarios ?></span></a></li>
+                <?php 
+                }
+                   
              if(Session::get('Rol') == 1){
              ?>
               <li><a href="<?= \cafeterias\Core\App::urlTo('abmcafeterias');?>">Abm Cafeterias</a></li>

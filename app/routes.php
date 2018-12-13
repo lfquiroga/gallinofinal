@@ -44,6 +44,8 @@ Route::add('POST', '/abmusuarios/eliminar', 'UserController@eliminar');
 
 
 /*RUTA CAFETERIAS*/
+Route::add('GET', '/todas', 'CafeteriasController@verTodas');
+
 Route::add('POST', '/abmcafeterias/cargar', 'CafeteriasController@cargar');
 
 Route::add('POST', '/abmcafeterias/editar/update', 'CafeteriasController@cargar');
@@ -59,6 +61,10 @@ Route::add('POST', '/abmcafeterias/eliminar', 'CafeteriasController@eliminar');
 Route::add('POST', '/ajax_favoritos/{id}', 'CafeteriasController@favoritos');
 
 Route::add('POST', '/ajax_quitar_favoritos/{id}', 'CafeteriasController@quitarFavoritos');
+
+Route::add('POST', '/todas/ajax_quitar_favoritos/{id}', 'CafeteriasController@quitarFavoritos');
+
+Route::add('POST', '/todas/ajax_favoritos/{id}', 'CafeteriasController@favoritos');
 
 Route::add('GET', '/favoritos', 'FavoritosController@index');
 

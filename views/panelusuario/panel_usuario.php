@@ -3,9 +3,12 @@
 use cafeterias\Storage\Session;
 use cafeterias\Core\Route;
 
+$usuario =$data['usuario'];
+
 $data = Route::getUrlParameters();
 
 if (Session::has('_errors')) {
+    
     $_errors = Session::once('_errors');
     $_old_input = Session::once('_old_input');
 }
@@ -32,7 +35,8 @@ if (Session::has('_errors')) {
         <input type="text" name="nombre" id="nombre" value="<?php
             if (isset($_old_input['nombre'])) {
 
-                echo($_old_input['nombre']);
+                echo('111'.$_old_input['nombre']);
+                
             } else if ($usuario->getNombre()) {
 
                 echo($usuario->getNombre());
@@ -52,6 +56,7 @@ if (Session::has('_errors')) {
         if (isset($_old_input['apellido'])) {
 
             echo($_old_input['apellido']);
+            
         } else if ($usuario->getApellido()) {
 
             echo($usuario->getApellido());
@@ -84,6 +89,9 @@ if (Session::has('_errors')) {
         <div class="form-group">
 
           <label for="sitio">Imagen de Perfil </label>
+          
+          <input type="hidden" name="hayimg" value="1">
+              
           <input type="file" name="imagen" id="imagen" value="<?php
             if (isset($_old_input['imagen'])) {
                 echo($_old_input['imagen']);

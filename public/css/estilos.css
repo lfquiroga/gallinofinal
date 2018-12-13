@@ -131,7 +131,27 @@ a:active{text-decoration:none;color:#ccc;}
 .ficharank img{width: 300px ; height: 200px;}
 
 
-.cardRanking{background-color:#F9F8F8;padding:5px; border: solid 1px #ccc;border-radius:2px; margin-bottom:10px; margin-left: 0px;     margin-right: 0px;}
+.cardRanking{
+            background-color:#F9F8F8;
+            padding:5px; 
+            border: solid 1px lightgray;
+            border-radius:2px;
+            margin-bottom:10px;
+            margin-left: 0px;
+            margin-right: 0px;
+
+}
+
+.cardRanking_todas{
+            background-color:#F9F8F8;
+            padding:5px; 
+            border: solid 5px white;
+            border-radius:2px;
+            margin-bottom:10px;
+            margin-left: 0px;
+            margin-right: 0px;
+            min-height: 410px;
+}
 .starspoints{color:#FFC501; margin-left:2px;margin-right:2px;}
 .usrmn{text-align:right;}
 /* -----  bloq rank  ------- */
@@ -190,6 +210,8 @@ a:active{text-decoration:none;color:#ccc;}
     .vermascont{margin-left: 46px;}
     
     .fchrnk01{margin-left: 40px;}
+    
+   
     
     #logoCafeteriasba{width:70px;}
     
@@ -585,3 +607,38 @@ comentarios_seccion{
 .containertiposcargados{
     margin: 25px 0px;
 }
+
+
+.triangle-isosceles {
+   position:relative;
+   padding:15px;
+   margin:1em 0 3em;
+   color:#000;
+   background:#f3961c;
+ 
+   /* css3 */
+   -moz-border-radius:10px;
+   -webkit-border-radius:10px;
+   border-radius:10px;
+   background:-moz-linear-gradient(top, #f9d835, #f3961c);
+   background:linear-gradient(top, #f9d835, #f3961c);
+}
+ 
+
+#comment-value{
+    position: absolute;
+    left: 97px;
+    color: #F44336;
+    top: 14px;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.cardRanking_todas .quitarfavoritos , .cardRanking_todas  .favoritos{
+    margin-left: 100%;
+}
+
+ .fchrnk01_todas{
+        width: 336px !important;
+        text-align: center!important;
+ }

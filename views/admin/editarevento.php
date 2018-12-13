@@ -16,7 +16,7 @@ if (Session::has('_errors')) {
     $_old_input = Session::once('_old_input');
 }
 
-//$img_cafeteria = $evento->obtenerimgportada($evento->id);
+//$img_cafeteria = $evento->ObtenerImgportada($evento->id);
 ?>
 
 <div class="container" >

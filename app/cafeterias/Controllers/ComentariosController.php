@@ -2,8 +2,6 @@
 
 namespace cafeterias\Controllers;
 
-namespace cafeterias\Controllers;
-
 use cafeterias\Storage\Session;
 use cafeterias\Auth\Auth;
 use cafeterias\Models\User;

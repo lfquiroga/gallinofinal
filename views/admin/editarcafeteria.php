@@ -22,7 +22,7 @@ if(Session::has('_errors')) {
         $_old_input['id_estado']=$_old_input['estado'];
         
 }   
-   $img_cafeteria=$cafeteria->obtenerimgportada($cafeteria->id);
+   $img_cafeteria=$cafeteria->ObtenerImgportada($cafeteria->id);
 
 
 

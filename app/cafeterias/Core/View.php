@@ -26,7 +26,7 @@ class View {
             require App::getViewsPath() . '/templates/menuadmin.php';
             
         } else if($admin == 4){
-            
+
             require App::getViewsPath() . '/templates/menu_usuario.php';
             
         }else{

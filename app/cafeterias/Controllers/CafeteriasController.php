@@ -21,12 +21,11 @@ if ($_SESSION['Rol'] != 1 || $_SESSION['Rol'] != 4 ){
 }
  
 */
-/**
- * 
- */
+
 class CafeteriasController {
 
-   public function index() {
+   
+    public function index() {
 
         if($_SESSION['Rol'] == 1){
         // Traemos todas cafeterias.
@@ -37,8 +36,6 @@ class CafeteriasController {
         }
         
     }
-
-
 
 
     /**
@@ -227,9 +224,43 @@ class CafeteriasController {
     }
 
     
+    /**
+     * Nos otorga todas las cafeterias
+     */
     
+     public function verTodas() {
+         
+      $cafeterias = Cafeteria::getAll();
+
+
+        $favoritas = '';
+
+        if (Session::has('id')) {
+
+            $favoritas      = Favoritos::getById($_SESSION['id'], 'id_usuario');
+            
+        }
+
+        $data['cafeterias'] = $cafeterias;
+
+        $fav                = array();
+
+        if ($favoritas != '') {
+
+            foreach ($favoritas as $row) {
+
+                $fav[] = $row['id_cafeteria'];
+                
+            }
+
+            $data['favoritas'] = $fav;
+        }
+
+        View::render('front/cafeterias', compact('data') );
+    }
+
     
-    
+  }
   
 
-}
+

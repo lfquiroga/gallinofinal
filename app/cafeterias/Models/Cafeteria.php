@@ -212,7 +212,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
         
         $db = Connection::getConnection();
         
-        $query = "SELECT * FROM cafeteria where id_estado = 1 ORDER BY id ASC LIMIT 6";
+        $query = "SELECT * FROM cafeteria where id_estado = 1 ORDER BY id ASC LIMIT 3";
         
         $stmt = $db->prepare($query);
         
@@ -236,7 +236,7 @@ class Cafeteria extends Modelo implements JsonSerializable {
      * @return array cafeteria
      * @throws Exception
      */
-    public static function obtenerimgportada($id_cafeteria) {
+    public static function ObtenerImgportada($id_cafeteria) {
         
         $db = Connection::getConnection();
         
@@ -252,8 +252,6 @@ class Cafeteria extends Modelo implements JsonSerializable {
             'id' => $id_cafeteria
         ]);
   
-       
-        
         while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) { 
             $img = $fila['ubicacion'];
         }
